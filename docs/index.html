@@ -4,94 +4,221 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>EOS Pkg Checker — wersje pakietow: EndeavourOS vs inne dystrybucje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1115;
-    --bg-card: #171a21;
-    --border: #262a33;
-    --text: #e6e8ec;
-    --text-dim: #9aa1ad;
-    --accent: #7c9eff;
-    --green: #3ecf8e;
-    --yellow: #e6c260;
-    --red: #e6796a;
-    --grey: #5a6070;
+    --sky-top: #7ec9f2;
+    --sky-bottom: #bfe8ff;
+    --grass: #6abf3e;
+    --grass-dark: #4f9a2e;
+    --dirt: #8a5a2b;
+    --dirt-dark: #6b431e;
+    --stone: #9a9a9a;
+    --stone-dark: #5c5c5c;
+    --stone-light: #cfcfcf;
+    --panel: #cbb894;
+    --panel-dark: #3b2f22;
+    --wood: #a9762f;
+    --gold: #ffcc33;
+    --diamond: #4ec9f5;
+    --emerald: #3ecf8e;
+    --redstone: #e2231a;
+    --text: #2b2115;
+    --text-dim: #5a4c38;
+    --green: #2f9e4f;
+    --yellow: #e0a400;
+    --red: #d43c2e;
+    --grey: #6b6b6b;
+    --border: #2b2115;
   }
   * { box-sizing: border-box; }
+  html { image-rendering: pixelated; }
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
-    background: var(--bg);
+    font-family: 'VT323', ui-monospace, monospace;
+    font-size: 19px;
     color: var(--text);
-    padding: 24px 16px 60px;
+    padding: 0 0 60px;
+    min-height: 100vh;
+    background:
+      linear-gradient(var(--sky-top), var(--sky-bottom) 320px, var(--sky-bottom) 100%);
+    background-attachment: fixed;
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  h1 { font-size: 1.5rem; margin-bottom: 4px; }
-  .subtitle { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 24px; line-height: 1.5; }
-  form { display: flex; gap: 8px; margin-bottom: 8px; }
+  .skyband {
+    height: 34px;
+    width: 100%;
+    background:
+      repeating-linear-gradient(90deg, var(--grass) 0 30px, var(--grass-dark) 30px 32px);
+    border-bottom: 4px solid var(--dirt-dark);
+  }
+  .dirtband {
+    height: 14px;
+    width: 100%;
+    background: repeating-linear-gradient(90deg, var(--dirt) 0 30px, var(--dirt-dark) 30px 32px);
+    margin-bottom: 20px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5rem;
+    margin: 18px 0 14px;
+    color: #fff;
+    text-shadow: 3px 3px 0 var(--grass-dark), 3px 3px 0 var(--grass-dark), 5px 5px 0 rgba(0,0,0,0.35);
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    background: var(--panel);
+    border: 4px solid var(--border);
+    box-shadow: inset 3px 3px 0 rgba(255,255,255,0.35), inset -3px -3px 0 rgba(0,0,0,0.25);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .linktree-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: linear-gradient(180deg, #ff5b5b, var(--redstone));
+    border: 4px solid var(--border);
+    box-shadow: inset 3px 3px 0 rgba(255,255,255,0.4), inset -3px -3px 0 rgba(0,0,0,0.35), 0 4px 0 rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .linktree-banner .lt-text {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.35);
+  }
+  .linktree-banner a.lt-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--gold);
+    border: 3px solid var(--border);
+    box-shadow: inset 2px 2px 0 rgba(255,255,255,0.6), inset -2px -2px 0 rgba(0,0,0,0.3), 0 3px 0 var(--border);
+    border-radius: 6px;
+    padding: 10px 16px;
+    white-space: nowrap;
+    transition: transform 0.05s;
+  }
+  .linktree-banner a.lt-btn:hover { filter: brightness(1.08); }
+  .linktree-banner a.lt-btn:active { transform: translateY(3px); box-shadow: inset 2px 2px 0 rgba(255,255,255,0.6), inset -2px -2px 0 rgba(0,0,0,0.3); }
+
+  form { display: flex; gap: 10px; margin-bottom: 10px; }
   input[type="text"] {
     flex: 1;
     padding: 12px 14px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--bg-card);
+    border-radius: 6px;
+    border: 4px solid var(--border);
+    background: #fffdf5;
     color: var(--text);
-    font-size: 1rem;
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.15);
   }
-  input[type="text"]:focus { outline: 2px solid var(--accent); }
+  input[type="text"]:focus { outline: 3px solid var(--diamond); }
   button {
-    padding: 12px 20px;
-    border-radius: 10px;
-    border: none;
-    background: var(--accent);
-    color: #0f1115;
-    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 6px;
+    border: 4px solid var(--border);
+    background: var(--grass);
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.78rem;
     cursor: pointer;
-    font-size: 1rem;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    box-shadow: inset 3px 3px 0 rgba(255,255,255,0.4), inset -3px -3px 0 rgba(0,0,0,0.3), 0 4px 0 var(--border);
   }
-  button:disabled { opacity: 0.6; cursor: default; }
-  .hint { color: var(--text-dim); font-size: 0.82rem; margin-bottom: 24px; }
-  .status { color: var(--text-dim); margin: 20px 0; }
+  button:hover:not(:disabled) { filter: brightness(1.1); }
+  button:active:not(:disabled) { transform: translateY(4px); box-shadow: inset 3px 3px 0 rgba(255,255,255,0.4), inset -3px -3px 0 rgba(0,0,0,0.3); }
+  button:disabled { opacity: 0.55; cursor: default; }
+  .hint {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    background: rgba(255,255,255,0.55);
+    border: 2px dashed var(--wood);
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+  .status { color: var(--text-dim); margin: 20px 0; font-size: 1.2rem; }
   .error-box {
-    background: #2a1a1a; border: 1px solid #5a2a2a; color: var(--red);
-    padding: 12px 14px; border-radius: 10px; margin: 16px 0; font-size: 0.9rem;
+    background: #fde2df; border: 4px solid var(--redstone); color: #7a1a12;
+    padding: 12px 14px; border-radius: 6px; margin: 16px 0; font-size: 1.05rem;
+    box-shadow: inset 2px 2px 0 rgba(255,255,255,0.5);
   }
   .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
+    background: var(--panel);
+    border: 4px solid var(--border);
+    box-shadow: inset 3px 3px 0 rgba(255,255,255,0.35), inset -3px -3px 0 rgba(0,0,0,0.25), 0 4px 0 rgba(0,0,0,0.2);
+    border-radius: 8px;
     padding: 18px 20px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
   .card h2 {
-    font-size: 1.05rem; margin: 0 0 12px; display: flex; align-items: center; gap: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.85rem;
+    margin: 0 0 14px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    color: var(--panel-dark);
   }
   .ref-badge {
-    font-size: 0.7rem; background: var(--accent); color: #0f1115; padding: 2px 8px;
-    border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem; background: var(--diamond); color: #05303d; padding: 4px 8px;
+    border: 2px solid var(--border); border-radius: 4px; text-transform: uppercase; letter-spacing: 0.03em;
   }
-  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); }
-  th { color: var(--text-dim); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  table { width: 100%; border-collapse: collapse; font-size: 1.1rem; }
+  th, td { text-align: left; padding: 8px 8px; border-bottom: 2px solid rgba(43,33,21,0.25); }
+  th {
+    color: var(--panel-dark); font-family: 'Press Start 2P', monospace; font-weight: 400;
+    font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.03em;
+  }
   tr:last-child td { border-bottom: none; }
-  .ver { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88rem; }
+  tr:hover td { background: rgba(255,255,255,0.25); }
+  .ver { font-family: 'VT323', monospace; font-size: 1.15rem; }
   .badge {
-    display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600;
+    display: inline-block; padding: 3px 9px; border-radius: 4px; font-size: 0.62rem; font-weight: 700;
+    font-family: 'Press Start 2P', monospace; border: 2px solid var(--border); text-transform: uppercase;
   }
-  .badge.newest { background: rgba(62,207,142,0.15); color: var(--green); }
-  .badge.older { background: rgba(230,194,96,0.15); color: var(--yellow); }
-  .badge.unknown { background: rgba(90,96,112,0.2); color: var(--grey); }
-  .lts { font-size: 0.68rem; background: rgba(124,158,255,0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; margin-left: 6px; }
-  .estimated { color: var(--text-dim); font-style: italic; font-size: 0.8rem; }
-  .empty { color: var(--text-dim); font-style: italic; font-size: 0.88rem; }
-  footer { margin-top: 40px; color: var(--text-dim); font-size: 0.78rem; line-height: 1.6; }
-  a { color: var(--accent); }
-  .note { color: var(--text-dim); font-size: 0.8rem; margin-top: 8px; }
+  .badge.newest { background: var(--emerald); color: #053a20; }
+  .badge.older { background: var(--gold); color: #4a2e00; }
+  .badge.unknown { background: var(--stone-light); color: #2b2b2b; }
+  .lts {
+    font-family: 'Press Start 2P', monospace; font-size: 0.5rem; background: var(--diamond); color: #05303d;
+    padding: 2px 6px; border: 2px solid var(--border); border-radius: 4px; margin-left: 6px;
+  }
+  .estimated { color: var(--text-dim); font-style: italic; font-size: 0.95rem; }
+  .empty { color: var(--text-dim); font-style: italic; font-size: 1.1rem; }
+  footer {
+    margin-top: 40px; color: var(--text-dim); font-size: 0.95rem; line-height: 1.7;
+    background: var(--panel); border: 4px solid var(--border); border-radius: 8px; padding: 14px 18px;
+    box-shadow: inset 3px 3px 0 rgba(255,255,255,0.3), inset -3px -3px 0 rgba(0,0,0,0.2);
+  }
+  a { color: #0a5aa8; }
+  a:hover { color: var(--redstone); }
+  .note { color: var(--text-dim); font-size: 1rem; margin-top: 8px; }
+  code {
+    background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.2); border-radius: 3px;
+    padding: 0 4px; font-family: 'VT323', monospace; font-size: 1.05em;
+  }
 </style>
 </head>
 <body>
+<div class="skyband"></div>
+<div class="dirtband"></div>
 <div class="wrap">
-  <h1>🔎 EOS Pkg Checker</h1>
+  <h1>⛏️ EOS PKG CHECKER</h1>
   <p class="subtitle">
     Wpisz nazwę pakietu, aby sprawdzić jego najnowszą wersję w repozytoriach, z których
     korzysta EndeavourOS (Arch: core/extra/multilib + AUR), a następnie porównać
@@ -99,6 +226,12 @@
     i — jeśli dostępny — Windows (Chocolatey). Przy każdej wersji: link do strony projektu/pakietu
     i dodatkowe informacje (opis, licencja, znane podatności).
   </p>
+
+  <div class="linktree-banner">
+    <div class="lt-text">🎮 Zajrzyj też na mój&nbsp;Linktree!</div>
+    <a class="lt-btn" href="https://pwasiak30.github.io/pwasiak-linktree/" target="_blank" rel="noopener">🔗 OTWÓRZ →</a>
+  </div>
+
   <form id="searchForm">
     <input type="text" id="pkgInput" list="pkgList" placeholder="np. firefox, python, vim, neovim..." autocomplete="off" autocapitalize="off" spellcheck="false" />
     <datalist id="pkgList"></datalist>
@@ -121,6 +254,8 @@
     Dane odświeża codziennie <a href="https://github.com/pwasiak30/endevour-package-checker/actions/workflows/update-data.yml" target="_blank" rel="noopener">GitHub Actions</a> —
     tam też można ręcznie doraźnie dodać/odświeżyć konkretny pakiet (przycisk „Run workflow”, pole „package”).
     Porównanie wersji jest przybliżone — różne dystrybucje stosują różne konwencje numeracji (epoch, sufiksy dystrybucyjne, patche).
+    <br /><br />
+    🔗 Autor: Paweł — <a href="https://pwasiak30.github.io/pwasiak-linktree/" target="_blank" rel="noopener">pwasiak30.github.io/pwasiak-linktree</a>
   </footer>
 </div>
 
@@ -178,8 +313,22 @@ function esc(s) {
   }[c]));
 }
 
+function stripMarkdown(s) {
+  if (!s) return '';
+  return s
+    .replace(/^#{1,6}\s*/gm, '')
+    .replace(/^\s*[-*]\s+/gm, '')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/\s*\n+\s*/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
 function truncate(s, n) {
   if (!s) return '';
+  s = stripMarkdown(s);
   return s.length > n ? s.slice(0, n).trim() + '…' : s;
 }
 
