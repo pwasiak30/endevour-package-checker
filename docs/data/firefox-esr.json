@@ -1,0 +1,48 @@
+{
+  "query": "firefox-esr",
+  "endeavouros": {
+    "arch_repos": [],
+    "arch_error": null,
+    "aur": {
+      "pkgname": "firefox-esr",
+      "version": "140.12.0-1",
+      "url": "https://aur.archlinux.org/packages/firefox-esr"
+    },
+    "aur_error": null
+  },
+  "reference_version": "140.12.0-1",
+  "debian": [],
+  "ubuntu": [],
+  "fedora": [],
+  "opensuse": [],
+  "gentoo": [],
+  "mint": [
+    {
+      "release": "Mint 22.3 \"zena\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.2 \"zara\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.1 \"xia\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22 \"wilma\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    }
+  ],
+  "repology_ok": true,
+  "repology_error": null,
+  "generated_at": "2026-07-20T13:41:13.637Z"
+}

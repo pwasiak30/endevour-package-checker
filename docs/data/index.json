@@ -1,0 +1,133 @@
+{
+  "packages": [
+    "chromium",
+    "code",
+    "docker",
+    "firefox",
+    "firefox-esr",
+    "gcc",
+    "gimp",
+    "git",
+    "go",
+    "htop",
+    "libreoffice-fresh",
+    "linux",
+    "linux-lts",
+    "neovim",
+    "nodejs",
+    "python",
+    "rust",
+    "steam",
+    "thunderbird",
+    "vim",
+    "vlc"
+  ],
+  "details": {
+    "chromium": {
+      "eos_version": "150.0.7871.128-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:41:35.987Z"
+    },
+    "code": {
+      "eos_version": "1.127.0-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:49:33.453Z"
+    },
+    "docker": {
+      "eos_version": "1:29.6.2-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:46:14.253Z"
+    },
+    "firefox-esr": {
+      "eos_version": "140.12.0-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:41:13.637Z"
+    },
+    "firefox": {
+      "eos_version": "152.0.6-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:40:45.948Z"
+    },
+    "gcc": {
+      "eos_version": "16.1.1+r346+g4e03491b401d-4",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:45:02.055Z"
+    },
+    "gimp": {
+      "eos_version": "3.2.4-2",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:46:37.919Z"
+    },
+    "git": {
+      "eos_version": "2.55.0-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:43:48.272Z"
+    },
+    "go": {
+      "eos_version": "2:1.26.5-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:45:51.200Z"
+    },
+    "htop": {
+      "eos_version": "3.5.2-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:49:08.763Z"
+    },
+    "libreoffice-fresh": {
+      "eos_version": "26.2.4-4",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:47:27.562Z"
+    },
+    "linux-lts": {
+      "eos_version": "6.18.39-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:48:20.159Z"
+    },
+    "linux": {
+      "eos_version": "7.1.4.arch1-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:47:56.339Z"
+    },
+    "neovim": {
+      "eos_version": "0.12.4-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:44:35.696Z"
+    },
+    "nodejs": {
+      "eos_version": "26.4.0-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:43:23.377Z"
+    },
+    "python": {
+      "eos_version": "3.14.6-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:42:57.709Z"
+    },
+    "rust": {
+      "eos_version": "1:1.97.1-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:45:26.045Z"
+    },
+    "steam": {
+      "eos_version": "1.0.0.87-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:48:45.741Z"
+    },
+    "thunderbird": {
+      "eos_version": "152.0.1-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:42:01.354Z"
+    },
+    "vim": {
+      "eos_version": "9.2.0804-1",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:44:12.734Z"
+    },
+    "vlc": {
+      "eos_version": "3.0.23_2-9",
+      "repology_ok": true,
+      "updated_at": "2026-07-20T13:47:02.006Z"
+    }
+  },
+  "last_build": "2026-07-20T13:50:31.478Z"
+}

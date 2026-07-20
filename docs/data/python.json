@@ -1,0 +1,255 @@
+{
+  "query": "python",
+  "endeavouros": {
+    "arch_repos": [
+      {
+        "repo": "core",
+        "pkgname": "python",
+        "version": "3.14.6-1",
+        "url": "https://archlinux.org/packages/core/x86_64/python/"
+      }
+    ],
+    "arch_error": null,
+    "aur": null,
+    "aur_error": null
+  },
+  "reference_version": "3.14.6-1",
+  "debian": [
+    {
+      "repo": "debian_11",
+      "version": "3.9.2",
+      "origversion": "3.9.2-1+deb11u7",
+      "status": "outdated",
+      "name": "python3.9"
+    },
+    {
+      "repo": "debian_12",
+      "version": "3.11.2",
+      "origversion": "3.11.2-6+deb12u3",
+      "status": "outdated",
+      "name": "python3.11"
+    },
+    {
+      "repo": "debian_13",
+      "version": "3.13.5",
+      "origversion": "3.13.5-2+deb13u3",
+      "status": "outdated",
+      "name": "python3.13"
+    },
+    {
+      "repo": "debian_14",
+      "version": "3.14.6",
+      "origversion": "3.14.6-1",
+      "status": "newest",
+      "name": "python3.14"
+    },
+    {
+      "repo": "debian_unstable",
+      "version": "3.14.6",
+      "origversion": "3.14.6-1",
+      "status": "newest",
+      "name": "python3.14"
+    },
+    {
+      "repo": "debian_experimental",
+      "version": "3.15.0~b3",
+      "origversion": "3.15.0~b3-1",
+      "status": "legacy",
+      "name": "python3.15"
+    }
+  ],
+  "ubuntu": [
+    {
+      "repo": "ubuntu_14_04",
+      "version": "3.5.2",
+      "origversion": "3.5.2-2ubuntu0~16.04.4~14.04.1",
+      "status": "outdated",
+      "name": "python3.5",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_16_04",
+      "version": "3.5.2",
+      "origversion": "3.5.2-2ubuntu0~16.04.13",
+      "status": "outdated",
+      "name": "python3.5",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_18_04",
+      "version": "3.8.0",
+      "origversion": "3.8.0-3ubuntu1~18.04.2",
+      "status": "outdated",
+      "name": "python3.8",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_20_04",
+      "version": "3.9.5",
+      "origversion": "3.9.5-3ubuntu0~20.04.1",
+      "status": "outdated",
+      "name": "python3.9",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_22_04",
+      "version": "3.11.0~rc1",
+      "origversion": "3.11.0~rc1-1~22.04",
+      "status": "outdated",
+      "name": "python3.11",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_24_04",
+      "version": "3.12.3",
+      "origversion": "3.12.3-1ubuntu0.15",
+      "status": "outdated",
+      "name": "python3.12",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_25_04",
+      "version": "3.13.3",
+      "origversion": "3.13.3-1ubuntu0.5",
+      "status": "outdated",
+      "name": "python3.13",
+      "lts": false
+    },
+    {
+      "repo": "ubuntu_25_10",
+      "version": "3.14.0",
+      "origversion": "3.14.0-1",
+      "status": "outdated",
+      "name": "python3.14",
+      "lts": false
+    },
+    {
+      "repo": "ubuntu_26_04",
+      "version": "3.14.4",
+      "origversion": "3.14.4-1",
+      "status": "outdated",
+      "name": "python3.14",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_26_10",
+      "version": "3.15.0~b1",
+      "origversion": "3.15.0~b1-3",
+      "status": "outdated",
+      "name": "python3.15",
+      "lts": false
+    }
+  ],
+  "fedora": [
+    {
+      "repo": "fedora_39",
+      "version": "3.14.0~a1",
+      "origversion": "3.14.0~a1-2.fc39",
+      "status": "outdated",
+      "name": "python3.14"
+    },
+    {
+      "repo": "fedora_43",
+      "version": "3.15.0~b3",
+      "origversion": "3.15.0~b3-1.fc43",
+      "status": "outdated",
+      "name": "python3.15"
+    },
+    {
+      "repo": "fedora_40",
+      "version": "3.14.0~a7",
+      "origversion": "3.14.0~a7-2.fc40",
+      "status": "outdated",
+      "name": "python3.14"
+    },
+    {
+      "repo": "fedora_41",
+      "version": "3.15.0~a2",
+      "origversion": "3.15.0~a2-1.fc41",
+      "status": "outdated",
+      "name": "python3.15"
+    },
+    {
+      "repo": "fedora_42",
+      "version": "3.15.0~b1",
+      "origversion": "3.15.0~b1-1.fc42",
+      "status": "outdated",
+      "name": "python3.15"
+    },
+    {
+      "repo": "fedora_44",
+      "version": "3.15.0~a7",
+      "origversion": "3.15.0~a7-1.fc44",
+      "status": "legacy",
+      "name": "python3.15"
+    },
+    {
+      "repo": "fedora_rawhide",
+      "version": "3.15.0~b3",
+      "origversion": "3.15.0~b3-1.fc45",
+      "status": "outdated",
+      "name": "python3.15"
+    }
+  ],
+  "opensuse": [
+    {
+      "repo": "opensuse_leap_15_5",
+      "version": "3.11.10",
+      "origversion": "3.11.10-150400.9.35.1",
+      "status": "outdated",
+      "name": "python311"
+    },
+    {
+      "repo": "opensuse_leap_15_6",
+      "version": "3.12.12",
+      "origversion": "3.12.12-150600.3.37.1",
+      "status": "outdated",
+      "name": "python312"
+    },
+    {
+      "repo": "opensuse_tumbleweed",
+      "version": "3.15.0~b3",
+      "origversion": "3.15.0~b3-1.2",
+      "status": "outdated",
+      "name": "python315"
+    }
+  ],
+  "gentoo": [
+    {
+      "repo": "gentoo",
+      "version": "3.15.9999",
+      "origversion": null,
+      "status": "rolling",
+      "name": "dev-lang/python"
+    }
+  ],
+  "mint": [
+    {
+      "release": "Mint 22.3 \"zena\"",
+      "version": "3.12.3",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.2 \"zara\"",
+      "version": "3.12.3",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.1 \"xia\"",
+      "version": "3.12.3",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22 \"wilma\"",
+      "version": "3.12.3",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    }
+  ],
+  "repology_ok": true,
+  "repology_error": null,
+  "generated_at": "2026-07-20T13:42:57.709Z"
+}

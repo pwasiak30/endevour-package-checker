@@ -1,0 +1,51 @@
+{
+  "query": "libreoffice-fresh",
+  "endeavouros": {
+    "arch_repos": [
+      {
+        "repo": "extra",
+        "pkgname": "libreoffice-fresh",
+        "version": "26.2.4-4",
+        "url": "https://archlinux.org/packages/extra/x86_64/libreoffice-fresh/"
+      }
+    ],
+    "arch_error": null,
+    "aur": null,
+    "aur_error": null
+  },
+  "reference_version": "26.2.4-4",
+  "debian": [],
+  "ubuntu": [],
+  "fedora": [],
+  "opensuse": [],
+  "gentoo": [],
+  "mint": [
+    {
+      "release": "Mint 22.3 \"zena\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.2 \"zara\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.1 \"xia\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22 \"wilma\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    }
+  ],
+  "repology_ok": true,
+  "repology_error": null,
+  "generated_at": "2026-07-20T13:47:27.562Z"
+}

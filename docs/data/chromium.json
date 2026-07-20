@@ -1,0 +1,248 @@
+{
+  "query": "chromium",
+  "endeavouros": {
+    "arch_repos": [
+      {
+        "repo": "extra",
+        "pkgname": "chromium",
+        "version": "150.0.7871.128-1",
+        "url": "https://archlinux.org/packages/extra/x86_64/chromium/"
+      }
+    ],
+    "arch_error": null,
+    "aur": null,
+    "aur_error": null
+  },
+  "reference_version": "150.0.7871.128-1",
+  "debian": [
+    {
+      "repo": "debian_11",
+      "version": "120.0.6099.224",
+      "origversion": "120.0.6099.224-1~deb11u1",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "debian_12",
+      "version": "150.0.7871.124",
+      "origversion": "150.0.7871.124-1~deb12u1",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "debian_13",
+      "version": "150.0.7871.124",
+      "origversion": "150.0.7871.124-1~deb13u1",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "debian_14",
+      "version": "150.0.7871.124",
+      "origversion": "150.0.7871.124-1",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "debian_unstable",
+      "version": "150.0.7871.124",
+      "origversion": "150.0.7871.124-1",
+      "status": "outdated",
+      "name": "chromium"
+    }
+  ],
+  "ubuntu": [
+    {
+      "repo": "ubuntu_14_04",
+      "version": "65.0.3325.181",
+      "origversion": "65.0.3325.181-0ubuntu0.14.04.1",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_16_04",
+      "version": "90.0.4430.72",
+      "origversion": "90.0.4430.72-0ubuntu0.16.04.1",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_18_04",
+      "version": "112.0.5615.49",
+      "origversion": "112.0.5615.49-0ubuntu0.18.04.1",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_20_04",
+      "version": "85.0.4183.83",
+      "origversion": "1:85.0.4183.83-0ubuntu0.20.04.3",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_22_04",
+      "version": "85.0.4183.83",
+      "origversion": "1:85.0.4183.83-0ubuntu2",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_25_10",
+      "version": "1snap1",
+      "origversion": "2:1snap1-0ubuntu3",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": false
+    },
+    {
+      "repo": "ubuntu_24_04",
+      "version": "1snap1",
+      "origversion": "2:1snap1-0ubuntu2",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_25_04",
+      "version": "1snap1",
+      "origversion": "2:1snap1-0ubuntu3",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": false
+    },
+    {
+      "repo": "ubuntu_26_04",
+      "version": "1snap1",
+      "origversion": "2:1snap1-0ubuntu4",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_26_10",
+      "version": "1snap1",
+      "origversion": "2:1snap1-0ubuntu4",
+      "status": "outdated",
+      "name": "chromium-browser",
+      "lts": false
+    }
+  ],
+  "fedora": [
+    {
+      "repo": "fedora_39",
+      "version": "130.0.6723.116",
+      "origversion": "130.0.6723.116-1.fc39",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "fedora_40",
+      "version": "136.0.7103.92",
+      "origversion": "136.0.7103.92-1.fc40",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "fedora_41",
+      "version": "142.0.7444.175",
+      "origversion": "142.0.7444.175-2.fc41",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "fedora_42",
+      "version": "148.0.7778.96",
+      "origversion": "148.0.7778.96-1.fc42",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "fedora_43",
+      "version": "150.0.7871.124",
+      "origversion": "150.0.7871.124-1.fc43",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "fedora_44",
+      "version": "150.0.7871.124",
+      "origversion": "150.0.7871.124-1.fc44",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "fedora_rawhide",
+      "version": "150.0.7871.124",
+      "origversion": "150.0.7871.124-1.fc45",
+      "status": "outdated",
+      "name": "chromium"
+    }
+  ],
+  "opensuse": [
+    {
+      "repo": "opensuse_leap_15_5",
+      "version": "131.0.6778.204",
+      "origversion": "131.0.6778.204-bp155.2.153.1",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "opensuse_leap_15_6",
+      "version": "144.0.7559.59",
+      "origversion": "144.0.7559.59-bp156.2.215.1",
+      "status": "outdated",
+      "name": "chromium"
+    },
+    {
+      "repo": "opensuse_tumbleweed",
+      "version": "150.0.7871.114",
+      "origversion": "150.0.7871.114-1.1",
+      "status": "outdated",
+      "name": "chromium"
+    }
+  ],
+  "gentoo": [
+    {
+      "repo": "gentoo",
+      "version": "151.0.7872.0",
+      "origversion": null,
+      "status": "ignored",
+      "name": "www-client/chromium"
+    }
+  ],
+  "mint": [
+    {
+      "release": "Mint 22.3 \"zena\"",
+      "version": "1snap1",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.2 \"zara\"",
+      "version": "1snap1",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.1 \"xia\"",
+      "version": "1snap1",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22 \"wilma\"",
+      "version": "1snap1",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    }
+  ],
+  "repology_ok": true,
+  "repology_error": null,
+  "generated_at": "2026-07-20T13:41:35.987Z"
+}

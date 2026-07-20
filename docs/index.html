@@ -98,20 +98,26 @@
     z Debian, Ubuntu (wszystkie wydania, w tym LTS), Fedora, openSUSE, Gentoo i Linux Mint.
   </p>
   <form id="searchForm">
-    <input type="text" id="pkgInput" placeholder="np. firefox, python, vim, neovim..." autocomplete="off" autocapitalize="off" spellcheck="false" />
+    <input type="text" id="pkgInput" list="pkgList" placeholder="np. firefox, python, vim, neovim..." autocomplete="off" autocapitalize="off" spellcheck="false" />
+    <datalist id="pkgList"></datalist>
     <button type="submit" id="searchBtn">Szukaj</button>
   </form>
-  <div class="hint">Dane pobierane na żywo z archlinux.org, aur.archlinux.org, repo.endeavouros.com (mirror) i repology.org.</div>
+  <div class="hint" id="hintText">
+    Projekt jest w 100% statyczny (GitHub Pages) — dane są wyliczane cyklicznie przez GitHub Actions
+    i zapisane jako pliki JSON w repo, żadnego backendu na żywo. Wyszukiwarka działa tylko dla
+    pakietów z listy poniżej (ładowanie…).
+  </div>
 
   <div id="output"></div>
 
   <footer>
     Źródła danych: <a href="https://archlinux.org/packages/" target="_blank" rel="noopener">Arch Linux Packages</a>,
     <a href="https://aur.archlinux.org/" target="_blank" rel="noopener">AUR</a>,
-    <a href="https://repology.org/" target="_blank" rel="noopener">Repology.org</a> (Debian, Ubuntu, Fedora, openSUSE, Gentoo),
-    <a href="https://packages.linuxmint.com/" target="_blank" rel="noopener">packages.linuxmint.com</a> (best-effort, z fallbackiem do bazy Ubuntu).
+    <a href="https://repology.org/" target="_blank" rel="noopener">Repology.org</a> (Debian, Ubuntu, Fedora, openSUSE, Gentoo).
+    Wersja dla Linux Mint to estymacja z bazowego wydania Ubuntu (Repology nie śledzi Mint osobno).
+    Dane odświeża codziennie <a href="https://github.com/pwasiak30/endevour-package-checker/actions/workflows/update-data.yml" target="_blank" rel="noopener">GitHub Actions</a> —
+    tam też można ręcznie doraźnie dodać/odświeżyć konkretny pakiet (przycisk „Run workflow”, pole „package”).
     Porównanie wersji jest przybliżone — różne dystrybucje stosują różne konwencje numeracji (epoch, sufiksy dystrybucyjne, patche).
-    Repology nie śledzi EndeavourOS ani Linux Mint jako osobnych repozytoriów, dlatego te dane pochodzą z innych źródeł opisanych powyżej.
   </footer>
 </div>
 
@@ -195,30 +201,50 @@ function renderDistroTable(title, rows, referenceVersion, opts) {
   </div>`;
 }
 
-// Strona jest hostowana statycznie na GitHub Pages (nie umie uruchamiac funkcji
-// serverless), wiec zapytanie o dane idzie do backendu na Netlify (tam mieszka
-// funkcja netlify/functions/search.js z tego samego repo). Gdy strona jest
-// akurat serwowana z samego Netlify, ten sam adres tez dziala (to ta sama funkcja).
-const API_BASE = location.hostname.endsWith('netlify.app')
-  ? ''
-  : 'https://endevour-package-checker.netlify.app';
+// Projekt jest w calosci statyczny: dane sa wyliczone z wyprzedzeniem przez
+// GitHub Actions (patrz scripts/build-data.js) i zapisane jako pliki JSON w
+// docs/data/. Frontend czyta je jak kazdy inny plik ze swojego wlasnego
+// hosta - bez CORS, bez zadnego backendu na zywo. Sciezki wzgledne, wiec
+// dzialaja zarowno pod pwasiak30.github.io/<repo>/, jak i pod ew. wlasna domena.
+const HINT_EL = document.getElementById('hintText');
+let PKG_INDEX = { packages: [], details: {}, last_build: null };
+
+async function loadIndex() {
+  try {
+    const res = await fetch('data/index.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    PKG_INDEX = await res.json();
+    const list = document.getElementById('pkgList');
+    list.innerHTML = PKG_INDEX.packages.map((p) => `<option value="${esc(p)}">`).join('');
+    const when = PKG_INDEX.last_build ? new Date(PKG_INDEX.last_build).toLocaleString('pl-PL') : '?';
+    HINT_EL.innerHTML = `Projekt jest w 100% statyczny (GitHub Pages) — dane wylicza cyklicznie GitHub Actions ` +
+      `i zapisuje jako pliki JSON w repo, żadnego backendu na żywo. Baza: <b>${PKG_INDEX.packages.length}</b> pakietów, ` +
+      `ostatnia aktualizacja: <b>${esc(when)}</b>.`;
+  } catch (e) {
+    HINT_EL.textContent = 'Nie udało się wczytać indeksu pakietów (' + e.message + ').';
+  }
+}
+loadIndex();
 
 async function doSearch(pkg) {
   OUTPUT.innerHTML = '<div class="status">Szukam „' + esc(pkg) + '”…</div>';
   BTN.disabled = true;
   try {
-    const res = await fetch(API_BASE + '/.netlify/functions/search?q=' + encodeURIComponent(pkg));
-    const data = await res.json();
-    if (!res.ok) {
-      OUTPUT.innerHTML = `<div class="error-box">${esc(data.error || 'Blad zapytania')}</div>`;
+    const res = await fetch('data/' + encodeURIComponent(pkg) + '.json', { cache: 'no-store' });
+    if (res.status === 404) {
+      const runUrl = 'https://github.com/pwasiak30/endevour-package-checker/actions/workflows/update-data.yml';
+      OUTPUT.innerHTML = `<div class="error-box">
+        Pakietu „${esc(pkg)}” nie ma (jeszcze) w statycznej bazie.
+        Dodaj go: wejdź na <a href="${runUrl}" target="_blank" rel="noopener">Actions → Update package data → Run workflow</a>
+        i wpisz jego nazwę w polu „package” — po ok. minucie pojawi się na stronie.
+      </div>`;
       return;
     }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
     render(data);
   } catch (e) {
-    const hint = e instanceof SyntaxError
-      ? ' (backend na Netlify wyglada na niepodlaczony/niewdrozony — zobacz README)'
-      : '';
-    OUTPUT.innerHTML = `<div class="error-box">Blad polaczenia: ${esc(e.message)}${hint}</div>`;
+    OUTPUT.innerHTML = `<div class="error-box">Błąd wczytywania danych: ${esc(e.message)}</div>`;
   } finally {
     BTN.disabled = false;
   }
@@ -228,13 +254,17 @@ function render(data) {
   const eos = data.endeavouros || {};
   const archRows = eos.arch_repos || [];
   // referencyjna wersja = najnowsza wsrod core/extra/multilib (Arch jest rolling, wiec to zazwyczaj najbardziej aktualna)
-  let referenceVersion = null;
+  let referenceVersion = data.reference_version || null;
   for (const r of archRows) {
     if (!referenceVersion || compareVersions(r.version, referenceVersion) > 0) referenceVersion = r.version;
   }
   if (!referenceVersion && eos.aur) referenceVersion = eos.aur.version;
 
   let html = '';
+  if (data.generated_at) {
+    const when = new Date(data.generated_at).toLocaleString('pl-PL');
+    html += `<div class="note" style="margin-bottom:12px;">Dane dla „${esc(data.query || '')}” wygenerowane: ${esc(when)}</div>`;
+  }
 
   // --- EndeavourOS ---
   html += '<div class="card"><h2>🟣 EndeavourOS <span class="ref-badge">Punkt odniesienia</span></h2>';
@@ -298,4 +328,3 @@ if (initial) {
 </script>
 </body>
 </html>
-<!-- touch 2026-07-20T12:12:57Z -->

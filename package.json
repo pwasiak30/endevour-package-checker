@@ -5,5 +5,8 @@
   "private": true,
   "engines": {
     "node": ">=18"
+  },
+  "scripts": {
+    "build-data": "node scripts/build-data.js"
   }
 }

@@ -1,0 +1,122 @@
+{
+  "query": "steam",
+  "endeavouros": {
+    "arch_repos": [
+      {
+        "repo": "multilib",
+        "pkgname": "steam",
+        "version": "1.0.0.87-1",
+        "url": "https://archlinux.org/packages/multilib/x86_64/steam/"
+      }
+    ],
+    "arch_error": null,
+    "aur": null,
+    "aur_error": null
+  },
+  "reference_version": "1.0.0.87-1",
+  "debian": [
+    {
+      "repo": "debian_11",
+      "version": "1.0.0.68",
+      "origversion": "1.0.0.68-1",
+      "status": "outdated",
+      "name": "steam"
+    }
+  ],
+  "ubuntu": [
+    {
+      "repo": "ubuntu_14_04",
+      "version": "1.0.0.45",
+      "origversion": "1:1.0.0.45-1ubuntu1.2",
+      "status": "outdated",
+      "name": "steam",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_16_04",
+      "version": "1.0.0.48",
+      "origversion": "1:1.0.0.48-1ubuntu4",
+      "status": "outdated",
+      "name": "steam",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_18_04",
+      "version": "1.0.0.54",
+      "origversion": "1:1.0.0.54+repack-5ubuntu1",
+      "status": "outdated",
+      "name": "steam",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_20_04",
+      "version": "1.0.0.61",
+      "origversion": "1:1.0.0.61-2ubuntu3",
+      "status": "outdated",
+      "name": "steam",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_22_04",
+      "version": "1.0.0.74",
+      "origversion": "1:1.0.0.74-1ubuntu2",
+      "status": "outdated",
+      "name": "steam",
+      "lts": true
+    }
+  ],
+  "fedora": [],
+  "opensuse": [
+    {
+      "repo": "opensuse_leap_15_5",
+      "version": "1.0.0.78",
+      "origversion": "1.0.0.78-lp155.1.1",
+      "status": "outdated",
+      "name": "steam"
+    },
+    {
+      "repo": "opensuse_leap_15_6",
+      "version": "1.0.0.79",
+      "origversion": "1.0.0.79-lp156.1.1",
+      "status": "outdated",
+      "name": "steam"
+    },
+    {
+      "repo": "opensuse_tumbleweed",
+      "version": "1.0.0.85",
+      "origversion": "1.0.0.85-3.3",
+      "status": "outdated",
+      "name": "steam"
+    }
+  ],
+  "gentoo": [],
+  "mint": [
+    {
+      "release": "Mint 22.3 \"zena\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.2 \"zara\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.1 \"xia\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22 \"wilma\"",
+      "version": null,
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    }
+  ],
+  "repology_ok": true,
+  "repology_error": null,
+  "generated_at": "2026-07-20T13:48:45.741Z"
+}

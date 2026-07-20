@@ -1,0 +1,255 @@
+{
+  "query": "git",
+  "endeavouros": {
+    "arch_repos": [
+      {
+        "repo": "extra",
+        "pkgname": "git",
+        "version": "2.55.0-1",
+        "url": "https://archlinux.org/packages/extra/x86_64/git/"
+      }
+    ],
+    "arch_error": null,
+    "aur": null,
+    "aur_error": null
+  },
+  "reference_version": "2.55.0-1",
+  "debian": [
+    {
+      "repo": "debian_13",
+      "version": "2.47.3",
+      "origversion": "1:2.47.3-0+deb13u1",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "debian_14",
+      "version": "2.53.0",
+      "origversion": "1:2.53.0-1",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "debian_unstable",
+      "version": "2.53.0",
+      "origversion": "1:2.53.0-1",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "debian_experimental",
+      "version": "2.53.0+next.20260227",
+      "origversion": "1:2.53.0+next.20260227-1",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "debian_11",
+      "version": "2.30.2",
+      "origversion": "1:2.30.2-1+deb11u2",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "debian_12",
+      "version": "2.39.5",
+      "origversion": "1:2.39.5-0+deb12u2",
+      "status": "outdated",
+      "name": "git"
+    }
+  ],
+  "ubuntu": [
+    {
+      "repo": "ubuntu_25_10",
+      "version": "2.51.0",
+      "origversion": "1:2.51.0-1ubuntu1",
+      "status": "outdated",
+      "name": "git",
+      "lts": false
+    },
+    {
+      "repo": "ubuntu_26_04",
+      "version": "2.53.0",
+      "origversion": "1:2.53.0-1ubuntu1",
+      "status": "outdated",
+      "name": "git",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_26_10",
+      "version": "2.53.0",
+      "origversion": "1:2.53.0-1ubuntu1",
+      "status": "outdated",
+      "name": "git",
+      "lts": false
+    },
+    {
+      "repo": "ubuntu_14_04",
+      "version": "1.9.1",
+      "origversion": "1:1.9.1-1ubuntu0.10",
+      "status": "outdated",
+      "name": "git",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_16_04",
+      "version": "2.7.4",
+      "origversion": "1:2.7.4-0ubuntu1",
+      "status": "outdated",
+      "name": "git",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_18_04",
+      "version": "2.17.1",
+      "origversion": "1:2.17.1-1ubuntu0.18",
+      "status": "outdated",
+      "name": "git",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_20_04",
+      "version": "2.25.1",
+      "origversion": "1:2.25.1-1ubuntu3.14",
+      "status": "outdated",
+      "name": "git",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_22_04",
+      "version": "2.34.1",
+      "origversion": "1:2.34.1-1ubuntu1",
+      "status": "outdated",
+      "name": "git",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_24_04",
+      "version": "2.43.0",
+      "origversion": "1:2.43.0-1ubuntu7",
+      "status": "outdated",
+      "name": "git",
+      "lts": true
+    },
+    {
+      "repo": "ubuntu_25_04",
+      "version": "2.48.1",
+      "origversion": "1:2.48.1-0ubuntu1.1",
+      "status": "outdated",
+      "name": "git",
+      "lts": false
+    }
+  ],
+  "fedora": [
+    {
+      "repo": "fedora_41",
+      "version": "2.52.0",
+      "origversion": "2.52.0-1.fc41",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "fedora_42",
+      "version": "2.54.0",
+      "origversion": "2.54.0-1.fc42",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "fedora_43",
+      "version": "2.55.0",
+      "origversion": "2.55.0-1.fc43",
+      "status": "newest",
+      "name": "git"
+    },
+    {
+      "repo": "fedora_44",
+      "version": "2.55.0",
+      "origversion": "2.55.0-1.fc44",
+      "status": "newest",
+      "name": "git"
+    },
+    {
+      "repo": "fedora_rawhide",
+      "version": "2.55.0",
+      "origversion": "2.55.0-1.fc45",
+      "status": "newest",
+      "name": "git"
+    },
+    {
+      "repo": "fedora_39",
+      "version": "2.47.0",
+      "origversion": "2.47.0-1.fc39",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "fedora_40",
+      "version": "2.49.0",
+      "origversion": "2.49.0-1.fc40",
+      "status": "outdated",
+      "name": "git"
+    }
+  ],
+  "opensuse": [
+    {
+      "repo": "opensuse_leap_15_6",
+      "version": "2.51.0",
+      "origversion": "2.51.0-150600.3.12.1",
+      "status": "outdated",
+      "name": "git"
+    },
+    {
+      "repo": "opensuse_tumbleweed",
+      "version": "2.55.0",
+      "origversion": "2.55.0-1.1",
+      "status": "newest",
+      "name": "git"
+    },
+    {
+      "repo": "opensuse_leap_15_5",
+      "version": "2.35.3",
+      "origversion": "2.35.3-150300.10.30.1",
+      "status": "outdated",
+      "name": "git"
+    }
+  ],
+  "gentoo": [
+    {
+      "repo": "gentoo",
+      "version": "9999",
+      "origversion": "9999-r2",
+      "status": "rolling",
+      "name": "dev-vcs/git"
+    }
+  ],
+  "mint": [
+    {
+      "release": "Mint 22.3 \"zena\"",
+      "version": "2.43.0",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.2 \"zara\"",
+      "version": "2.43.0",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22.1 \"xia\"",
+      "version": "2.43.0",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    },
+    {
+      "release": "Mint 22 \"wilma\"",
+      "version": "2.43.0",
+      "source": "estymacja z bazy Ubuntu 24.04",
+      "estimated": true
+    }
+  ],
+  "repology_ok": true,
+  "repology_error": null,
+  "generated_at": "2026-07-20T13:43:48.272Z"
+}
