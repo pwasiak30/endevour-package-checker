@@ -454,7 +454,15 @@ function shardKey(name) {
 const shardCache = new Map(); // shardKey -> Promise<object>
 function loadShard(shard) {
   if (!shardCache.has(shard)) {
-    shardCache.set(shard, fetch(`data/pkg/${shard}.json`, { cache: 'force-cache' }).then((res) => {
+    // Cache-busting wg last_build: GitHub Pages wysyla naglowek Expires (krotki
+    // TTL), a przegladarka pod cache:'force-cache' potrafi zapamietac nawet
+    // odpowiedz 404 sprzed ukonczenia builda i uparcie ja serwowac z pamieci
+    // podrecznej mimo ze plik juz istnieje. Doklejenie ?v=<znacznik builda> do
+    // URL sprawia, ze kazdy nowy build ma "swiezy" adres (a w ramach tego
+    // samego builda i tak korzystamy z shardCache w pamieci, wiec nie ma
+    // powtornych pobran).
+    const v = encodeURIComponent(PKG_INDEX.last_build || '');
+    shardCache.set(shard, fetch(`data/pkg/${shard}.json?v=${v}`, { cache: 'force-cache' }).then((res) => {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
     }));
