@@ -4,12 +4,7 @@ on:
   schedule:
     # codziennie o 4:17 UTC (poza szczytem, zeby nie obciazac API o pelnych godzinach)
     - cron: '17 4 * * *'
-  workflow_dispatch:
-    inputs:
-      package:
-        description: 'Odswiez/dodaj tylko ten jeden pakiet (puste = pelne odswiezenie wg data/packages.txt)'
-        required: false
-        default: ''
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -21,6 +16,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Pelny przebieg (wszystkie ~131 tys. pakietow core/extra/multilib + AUR,
+    # ograniczone glownie limitem Repology 1 zapytanie/s) trwa rzedu
+    # kilkunastu-kilkudziesieciu minut - dajemy spory zapas.
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
 
@@ -28,25 +27,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Dodaj nowy pakiet do listy (jesli podano input i jeszcze go nie ma)
-        if: ${{ github.event.inputs.package != '' }}
-        run: |
-          PKG="${{ github.event.inputs.package }}"
-          if ! grep -qxF "$PKG" data/packages.txt; then
-            echo "$PKG" >> data/packages.txt
-            echo "Dodano '$PKG' do data/packages.txt"
-          fi
-
-      - name: Zbuduj dane
-        env:
-          PACKAGE: ${{ github.event.inputs.package }}
-        run: node scripts/build-data.js
+      - name: Zbuduj dane (pelny, hurtowy crawl wszystkich pakietow)
+        run: node scripts/build-full-data.js
 
       - name: Commit i push wynikow
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data data/packages.txt
+          git add docs/data
           if git diff --cached --quiet; then
             echo "Brak zmian w danych - nic do commitowania."
           else
