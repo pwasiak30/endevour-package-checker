@@ -1,17 +1,32 @@
 {
   "query": "go",
+  "repology_project_url": "https://repology.org/project/go/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "extra",
         "pkgname": "go",
         "version": "2:1.26.5-1",
-        "url": "https://archlinux.org/packages/extra/x86_64/go/"
+        "page_url": "https://archlinux.org/packages/extra/x86_64/go/",
+        "homepage": "https://go.dev/",
+        "description": "Core compiler tools for the Go programming language",
+        "licenses": [
+          "BSD-3-Clause"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
+  },
+  "windows": {
+    "id": "go",
+    "title": "Go Programming Language",
+    "version": "1.26.5",
+    "description": "![Gopher Image](https://cdn.jsdelivr.net/gh/mikeee/ChocoPackages/images/golang/gopher.png)\n\nThis is a virtual package that points to the `golang` package.\n\nThe Go programming language is an open source project to make programmers more productive.\n\nGo is expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its novel type system enables flexible and modular program construction. Go compiles quickly to machine code yet has the convenience of garbage collection and the power of run-time reflection. It's a fast, statically typed, compiled language that feels like a dynamically typed, interpreted language.\n\n**NOTE**: This package is automatically updated. If it is out of date and there is no newer package submitted, please use the `Contact Maintainers` functionality to alert me.",
+    "homepage": "https://golang.org/",
+    "package_source_url": "https://github.com/mikeee/ChocoPackages/tree/master/automatic/go",
+    "page_url": "https://community.chocolatey.org/packages/go"
   },
   "reference_version": "2:1.26.5-1",
   "debian": [
@@ -20,56 +35,96 @@
       "version": "1.26.5",
       "origversion": "1.26.5-1~bpo13+1",
       "status": "newest",
-      "name": "golang-1.26"
+      "name": "golang-1.26",
+      "srcname": "golang-1.26",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.26"
     },
     {
       "repo": "debian_14",
       "version": "1.27~rc2",
       "origversion": "1.27~rc2-1",
       "status": "devel",
-      "name": "golang-1.27"
+      "name": "golang-1.27",
+      "srcname": "golang-1.27",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.27"
     },
     {
       "repo": "debian_unstable",
       "version": "1.27~rc2",
       "origversion": "1.27~rc2-1",
       "status": "devel",
-      "name": "golang-1.27"
+      "name": "golang-1.27",
+      "srcname": "golang-1.27",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.27"
     },
     {
       "repo": "debian_experimental",
       "version": "1.26.5",
       "origversion": "1.26.5-1",
       "status": "newest",
-      "name": "golang-1.26"
+      "name": "golang-1.26",
+      "srcname": "golang-1.26",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.26"
     },
     {
       "repo": "debian_11",
       "version": "1.15.15",
       "origversion": "1.15.15-1~deb11u2",
       "status": "outdated",
-      "name": "golang-1.15"
+      "name": "golang-1.15",
+      "srcname": "golang-1.15",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.15"
     },
     {
       "repo": "debian_12",
       "version": "1.19.8",
       "origversion": "1.19.8-2",
       "status": "outdated",
-      "name": "golang-1.19"
+      "name": "golang-1.19",
+      "srcname": "golang-1.19",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.19"
     },
     {
       "repo": "debian_12_backports",
       "version": "1.23.5",
       "origversion": "1.23.5-1~bpo12+1",
       "status": "outdated",
-      "name": "golang-1.23"
+      "name": "golang-1.23",
+      "srcname": "golang-1.23",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.23"
     },
     {
       "repo": "debian_13",
       "version": "1.24.4",
       "origversion": "1.24.4-1",
       "status": "outdated",
-      "name": "golang-1.24"
+      "name": "golang-1.24",
+      "srcname": "golang-1.24",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/golang-1.24"
     }
   ],
   "ubuntu": [
@@ -79,7 +134,12 @@
       "origversion": "1.27~rc2-1",
       "status": "devel",
       "name": "golang-1.27",
-      "lts": false
+      "srcname": "golang-1.27",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.27"
     },
     {
       "repo": "ubuntu_14_04",
@@ -87,7 +147,12 @@
       "origversion": "1.10.4-2ubuntu1~14.04.1",
       "status": "outdated",
       "name": "golang-1.10",
-      "lts": true
+      "srcname": "golang-1.10",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.10"
     },
     {
       "repo": "ubuntu_14_04_backports",
@@ -95,7 +160,12 @@
       "origversion": "2:1.3.3-1ubuntu4~ubuntu14.04.1",
       "status": "outdated",
       "name": "golang",
-      "lts": false
+      "srcname": "golang",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang"
     },
     {
       "repo": "ubuntu_16_04",
@@ -103,7 +173,12 @@
       "origversion": "1.13.8-1ubuntu1~16.04.3",
       "status": "outdated",
       "name": "golang-1.13",
-      "lts": true
+      "srcname": "golang-1.13",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.13"
     },
     {
       "repo": "ubuntu_16_04_backports",
@@ -111,7 +186,12 @@
       "origversion": "1.10-1ubuntu1~16.04.1",
       "status": "outdated",
       "name": "golang-1.10",
-      "lts": false
+      "srcname": "golang-1.10",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.10"
     },
     {
       "repo": "ubuntu_18_04",
@@ -119,7 +199,12 @@
       "origversion": "1.18.1-1ubuntu1~18.04.4",
       "status": "outdated",
       "name": "golang-1.18",
-      "lts": true
+      "srcname": "golang-1.18",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.18"
     },
     {
       "repo": "ubuntu_20_04",
@@ -127,7 +212,12 @@
       "origversion": "1.22.2-2~20.04.2",
       "status": "outdated",
       "name": "golang-1.22",
-      "lts": true
+      "srcname": "golang-1.22",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.22"
     },
     {
       "repo": "ubuntu_22_04",
@@ -135,7 +225,12 @@
       "origversion": "1.24.4-1ubuntu1~22.04.2",
       "status": "outdated",
       "name": "golang-1.24",
-      "lts": true
+      "srcname": "golang-1.24",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.24"
     },
     {
       "repo": "ubuntu_24_04",
@@ -143,7 +238,12 @@
       "origversion": "1.24.4-1ubuntu1~24.04.2",
       "status": "outdated",
       "name": "golang-1.24",
-      "lts": true
+      "srcname": "golang-1.24",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.24"
     },
     {
       "repo": "ubuntu_25_04",
@@ -151,7 +251,12 @@
       "origversion": "1.24.2-1",
       "status": "outdated",
       "name": "golang-1.24",
-      "lts": false
+      "srcname": "golang-1.24",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.24"
     },
     {
       "repo": "ubuntu_25_10",
@@ -159,7 +264,12 @@
       "origversion": "1.25.7-2~25.10.1",
       "status": "outdated",
       "name": "golang-1.25",
-      "lts": false
+      "srcname": "golang-1.25",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.25"
     },
     {
       "repo": "ubuntu_26_04",
@@ -167,7 +277,12 @@
       "origversion": "1.26.0-1",
       "status": "outdated",
       "name": "golang-1.26",
-      "lts": true
+      "srcname": "golang-1.26",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/golang-1.26"
     }
   ],
   "fedora": [
@@ -176,49 +291,98 @@
       "version": "1.25.12",
       "origversion": "1.25.12-1.fc43",
       "status": "outdated",
-      "name": "golang"
+      "name": "golang",
+      "srcname": "golang",
+      "summary": "The Go Programming Language",
+      "licenses": [
+        "BSD-3-Clause AND LicenseRef-Fedora-Public-Domain"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/golang"
     },
     {
       "repo": "fedora_44",
       "version": "1.26.5",
       "origversion": "1.26.5-1.fc44",
       "status": "newest",
-      "name": "golang"
+      "name": "golang",
+      "srcname": "golang",
+      "summary": "The Go Programming Language",
+      "licenses": [
+        "BSD-3-Clause AND LicenseRef-Fedora-Public-Domain"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/golang"
     },
     {
       "repo": "fedora_rawhide",
       "version": "1.27~rc2",
       "origversion": "1.27~rc2-1.fc45",
       "status": "devel",
-      "name": "golang"
+      "name": "golang",
+      "srcname": "golang",
+      "summary": "The Go Programming Language",
+      "licenses": [
+        "BSD-3-Clause AND LicenseRef-Fedora-Public-Domain"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/golang"
     },
     {
       "repo": "fedora_39",
       "version": "1.22.9",
       "origversion": "1.22.9-1.fc39",
       "status": "outdated",
-      "name": "golang"
+      "name": "golang",
+      "srcname": "golang",
+      "summary": "The Go Programming Language",
+      "licenses": [
+        "BSD-3-Clause AND LicenseRef-Fedora-Public-Domain"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/golang"
     },
     {
       "repo": "fedora_40",
       "version": "1.23.8",
       "origversion": "1.23.8-1.fc40",
       "status": "outdated",
-      "name": "golang"
+      "name": "golang",
+      "srcname": "golang",
+      "summary": "The Go Programming Language",
+      "licenses": [
+        "BSD-3-Clause AND LicenseRef-Fedora-Public-Domain"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/golang"
     },
     {
       "repo": "fedora_41",
       "version": "1.24.10",
       "origversion": "1.24.10-1.fc41",
       "status": "outdated",
-      "name": "golang"
+      "name": "golang",
+      "srcname": "golang",
+      "summary": "The Go Programming Language",
+      "licenses": [
+        "BSD-3-Clause AND LicenseRef-Fedora-Public-Domain"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/golang"
     },
     {
       "repo": "fedora_42",
       "version": "1.25.10",
       "origversion": "1.25.10-2.fc42",
       "status": "outdated",
-      "name": "golang"
+      "name": "golang",
+      "srcname": "golang",
+      "summary": "The Go Programming Language",
+      "licenses": [
+        "BSD-3-Clause AND LicenseRef-Fedora-Public-Domain"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/golang"
     }
   ],
   "opensuse": [
@@ -227,30 +391,58 @@
       "version": "1.26.5",
       "origversion": "1.26.5-1.1",
       "status": "newest",
-      "name": "go1.26"
+      "name": "go1.26",
+      "srcname": "go1.26",
+      "summary": "A compiled, garbage-collected, concurrent programming language",
+      "licenses": [
+        "BSD-3-Clause"
+      ],
+      "vulnerable": false,
+      "project_link": "https://software.opensuse.org/package/go1.26"
     },
     {
       "repo": "opensuse_leap_15_5",
       "version": "1.23.4",
       "origversion": "1.23.4-150000.1.15.1",
       "status": "outdated",
-      "name": "go1.23"
+      "name": "go1.23",
+      "srcname": "go1.23",
+      "summary": "A compiled, garbage-collected, concurrent programming language",
+      "licenses": [
+        "BSD-3-Clause"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/go1.23"
     },
     {
       "repo": "opensuse_leap_15_6",
       "version": "1.25.5",
       "origversion": "1.25.5-150000.1.23.1",
       "status": "outdated",
-      "name": "go1.25"
+      "name": "go1.25",
+      "srcname": "go1.25",
+      "summary": "A compiled, garbage-collected, concurrent programming language",
+      "licenses": [
+        "BSD-3-Clause"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/go1.25"
     }
   ],
   "gentoo": [
     {
       "repo": "gentoo",
-      "version": "9999",
+      "version": "1.26.4",
       "origversion": null,
-      "status": "rolling",
-      "name": "dev-lang/go"
+      "status": "outdated",
+      "name": "dev-lang/go",
+      "srcname": "dev-lang/go",
+      "summary": "A concurrent garbage collected and typesafe programming language",
+      "licenses": [
+        "BSD"
+      ],
+      "vulnerable": true,
+      "project_link": "https://packages.gentoo.org/packages/dev-lang/go"
     }
   ],
   "mint": [
@@ -281,5 +473,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:45:51.200Z"
+  "generated_at": "2026-07-20T14:20:20.020Z"
 }

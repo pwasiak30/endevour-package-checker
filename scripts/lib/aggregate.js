@@ -70,7 +70,10 @@ async function getArchPackages(name) {
       repo: r.repo,
       pkgname: r.pkgname,
       version: `${r.epoch && r.epoch !== 0 ? r.epoch + ':' : ''}${r.pkgver}-${r.pkgrel}`,
-      url: `https://archlinux.org/packages/${r.repo}/${r.arch}/${r.pkgname}/`,
+      page_url: `https://archlinux.org/packages/${r.repo}/${r.arch}/${r.pkgname}/`,
+      homepage: r.url || null,
+      description: r.pkgdesc || null,
+      licenses: r.licenses || [],
     }));
   } catch (e) {
     return { error: e.message };
@@ -90,10 +93,63 @@ async function getAurPackage(name) {
     return {
       pkgname: r.Name,
       version: r.Version,
-      url: `https://aur.archlinux.org/packages/${r.Name}`,
+      page_url: `https://aur.archlinux.org/packages/${r.Name}`,
+      homepage: r.URL || null,
+      description: r.Description || null,
+      licenses: r.License || [],
     };
   } catch (e) {
     return { error: e.message };
+  }
+}
+
+// ---------- Windows (Chocolatey community repository, dopasowanie po ID) ----------
+// Best-effort: nie kazdy pakiet ma odpowiednik w Chocolatey, a nazwy ID czasem
+// sie roznia od nazw pakietow linuksowych (np. wielkosc liter, myslniki) - w
+// takim wypadku po prostu nie znajdziemy dopasowania i sekcja Windows zostanie
+// pominieta (nie jest to blad).
+function decodeXmlEntities(s) {
+  return s
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&');
+}
+
+async function getWindowsPackage(name) {
+  try {
+    const filter = `(tolower(Id) eq '${name.toLowerCase().replace(/'/g, "''")}') and IsLatestVersion`;
+    const url = `https://community.chocolatey.org/api/v2/Packages()?$filter=${encodeURIComponent(filter)}&$top=1`;
+    const res = await withTimeout(
+      fetch(url, { headers: { 'User-Agent': APP_UA, Accept: 'application/atom+xml' } }),
+      15000,
+      'chocolatey'
+    );
+    if (!res.ok) return null;
+    const xml = await res.text();
+    const entryParts = xml.split('<entry>');
+    if (entryParts.length < 2) return null;
+    const entry = entryParts[1];
+    const pick = (tag) => {
+      const m = entry.match(new RegExp(`<d:${tag}>([^<]*)</d:${tag}>`));
+      return m ? decodeXmlEntities(m[1]) : null;
+    };
+    const idMatch = xml.match(/Packages\(Id='([^']+)',Version='([^']+)'\)/);
+    const version = pick('Version');
+    if (!version) return null;
+    const id = idMatch ? idMatch[1] : name;
+    return {
+      id,
+      title: pick('Title') || id,
+      version,
+      description: pick('Summary') || pick('Description') || null,
+      homepage: pick('ProjectUrl') || null,
+      package_source_url: pick('PackageSourceUrl') || null,
+      page_url: `https://community.chocolatey.org/packages/${id}`,
+    };
+  } catch (e) {
+    return null;
   }
 }
 
@@ -148,10 +204,35 @@ async function getRepologyData(name) {
   }
 }
 
+// Gentoo (i inne repo oparte na ebuildach) czesto ma rownolegle "live" ebuildy
+// oznaczone wersja "9999" (ciagna z HEAD gita, nie z wydania) - Repology
+// oznacza je statusem "rolling". Numerycznie "9999" wygrywa z kazda realna
+// wersja (np. "6.12.5"), wiec bez tego wyjatku apka pokazywalaby bez sensu
+// "9999" jako "najnowsza wersje" niemal kazdego pakietu w Gentoo.
+function isLiveEbuild(entry) {
+  return entry.status === 'rolling' || entry.version === '9999';
+}
+
+// Repology sam oznacza niektore wpisy jako niewiarygodne (np. bledne
+// dopasowanie projektu, jak "dev-util/xxd" podpiete pod projekt "vim") -
+// takie wpisy pomijamy calkowicie, zamiast ryzykowac pokazanie zlych danych.
+const UNTRUSTED_STATUSES = new Set(['incorrect', 'untrusted', 'ignored']);
+
+// Stabilne, wersjo-niezalezne linki do strony/trackera pakietu w danej
+// dystrybucji (nie wymagaja zgadywania nazwy kodowej wydania).
+const PROJECT_LINK = {
+  debian: (n) => `https://tracker.debian.org/pkg/${encodeURIComponent(n)}`,
+  ubuntu: (n) => `https://launchpad.net/ubuntu/+source/${encodeURIComponent(n)}`,
+  fedora: (n) => `https://src.fedoraproject.org/rpms/${encodeURIComponent(n)}`,
+  opensuse: (n) => `https://software.opensuse.org/package/${encodeURIComponent(n)}`,
+  gentoo: (n) => `https://packages.gentoo.org/packages/${n}`, // n to juz "kategoria/nazwa"
+};
+
 function bucketRepology(packages) {
   const buckets = { debian: new Map(), ubuntu: new Map(), fedora: new Map(), opensuse: new Map(), gentoo: new Map() };
 
   for (const p of packages) {
+    if (UNTRUSTED_STATUSES.has(p.status)) continue;
     const repo = p.repo || '';
     const entry = {
       repo,
@@ -159,6 +240,10 @@ function bucketRepology(packages) {
       origversion: p.origversion,
       status: p.status,
       name: p.visiblename || p.binname || p.srcname,
+      srcname: p.srcname || p.binname || p.visiblename || null,
+      summary: p.summary || null,
+      licenses: p.licenses || [],
+      vulnerable: !!p.vulnerable,
     };
 
     let target = null;
@@ -175,25 +260,43 @@ function bucketRepology(packages) {
     if (!existing) {
       target.set(repo, entry);
     } else {
-      const cmp = compareVersions(entry.version, existing.version);
-      if (cmp > 0) {
+      const existingLive = isLiveEbuild(existing);
+      const entryLive = isLiveEbuild(entry);
+      if (existingLive && !entryLive) {
+        // realna wersja zawsze wygrywa z live/9999, niezaleznie od "wartosci" liczbowej
         target.set(repo, entry);
-      } else if (cmp === 0) {
-        const isVariant = (n) => /-(bin|l10n|dbg|debuginfo|debugsource)(\/|$)/i.test(n || '');
-        if (isVariant(existing.name) && !isVariant(entry.name)) {
+      } else if (existingLive === entryLive) {
+        const cmp = compareVersions(entry.version, existing.version);
+        if (cmp > 0) {
           target.set(repo, entry);
+        } else if (cmp === 0) {
+          const isVariant = (n) => /-(bin|l10n|dbg|debuginfo|debugsource)(\/|$)/i.test(n || '');
+          if (isVariant(existing.name) && !isVariant(entry.name)) {
+            target.set(repo, entry);
+          }
         }
       }
+      // else: existing jest realna wersja, entry jest live -> zostawiamy existing
     }
   }
 
-  return {
+  const result = {
     debian: [...buckets.debian.values()],
     ubuntu: [...buckets.ubuntu.values()],
     fedora: [...buckets.fedora.values()],
     opensuse: [...buckets.opensuse.values()],
     gentoo: [...buckets.gentoo.values()],
   };
+  // stabilny link do projektu w kazdej dystrybucji (nie zalezy od konkretnego wydania)
+  for (const [key, rows] of Object.entries(result)) {
+    const linkFn = PROJECT_LINK[key];
+    if (!linkFn) continue;
+    for (const row of rows) {
+      const ident = row.srcname || row.name;
+      if (ident) row.project_link = linkFn(ident);
+    }
+  }
+  return result;
 }
 
 // ---------- Linux Mint (estymacja z bazy Ubuntu - bez dodatkowych zapytan) ----------
@@ -210,10 +313,11 @@ function getMintData(ubuntuBucket) {
 }
 
 async function aggregatePackage(name) {
-  const [archResult, aurResult, repologyResult] = await Promise.all([
+  const [archResult, aurResult, repologyResult, windowsResult] = await Promise.all([
     getArchPackages(name),
     getAurPackage(name),
     getRepologyData(name),
+    getWindowsPackage(name),
   ]);
 
   const buckets = bucketRepology(repologyResult.packages);
@@ -228,12 +332,14 @@ async function aggregatePackage(name) {
 
   return {
     query: name,
+    repology_project_url: `https://repology.org/project/${encodeURIComponent(name)}/versions`,
     endeavouros: {
       arch_repos: archRows,
       arch_error: Array.isArray(archResult) ? null : archResult.error,
       aur: aurResult && !aurResult.error ? aurResult : null,
       aur_error: aurResult && aurResult.error ? aurResult.error : null,
     },
+    windows: windowsResult,
     reference_version: referenceVersion,
     debian: buckets.debian,
     ubuntu: buckets.ubuntu,
@@ -247,4 +353,4 @@ async function aggregatePackage(name) {
   };
 }
 
-module.exports = { aggregatePackage, compareVersions, bucketRepology, getArchPackages, getAurPackage, getRepologyData };
+module.exports = { aggregatePackage, compareVersions, bucketRepology, getArchPackages, getAurPackage, getRepologyData, getWindowsPackage };

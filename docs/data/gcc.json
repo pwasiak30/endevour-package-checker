@@ -1,150 +1,152 @@
 {
   "query": "gcc",
+  "repology_project_url": "https://repology.org/project/gcc/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "core",
         "pkgname": "gcc",
         "version": "16.1.1+r346+g4e03491b401d-4",
-        "url": "https://archlinux.org/packages/core/x86_64/gcc/"
+        "page_url": "https://archlinux.org/packages/core/x86_64/gcc/",
+        "homepage": "https://gcc.gnu.org",
+        "description": "The GNU Compiler Collection - C and C++ frontends",
+        "licenses": [
+          "GFDL-1.3-or-later",
+          "GPL-3.0-or-later WITH GCC-exception-3.1"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
   },
+  "windows": null,
   "reference_version": "16.1.1+r346+g4e03491b401d-4",
   "debian": [
     {
+      "repo": "debian_12",
+      "version": "12.2.0",
+      "origversion": "12.2.0-1",
+      "status": "outdated",
+      "name": "gcc-12-doc",
+      "srcname": "gcc-12-doc",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gcc-12-doc"
+    },
+    {
       "repo": "debian_11",
-      "version": "20210106",
-      "origversion": "20210106-1",
-      "status": "incorrect",
-      "name": "libiberty"
+      "version": "10.2.1",
+      "origversion": "10.2.1-6",
+      "status": "outdated",
+      "name": "gcc-10",
+      "srcname": "gcc-10",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gcc-10"
     },
     {
       "repo": "debian_13",
-      "version": "20250315",
-      "origversion": "20250315-1",
-      "status": "incorrect",
-      "name": "libiberty"
-    },
-    {
-      "repo": "debian_12",
-      "version": "20230104",
-      "origversion": "20230104-1",
-      "status": "incorrect",
-      "name": "libiberty"
-    },
-    {
-      "repo": "debian_14",
-      "version": "20260327",
-      "origversion": "20260327-1",
-      "status": "incorrect",
-      "name": "libiberty"
+      "version": "14.2.0",
+      "origversion": "14.2.0-19",
+      "status": "outdated",
+      "name": "gcc-14",
+      "srcname": "gcc-14",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gcc-14"
     },
     {
       "repo": "debian_unstable",
-      "version": "20260327",
-      "origversion": "20260327-1",
-      "status": "incorrect",
-      "name": "libiberty"
+      "version": "16.1.0",
+      "origversion": "16.1.0-1",
+      "status": "newest",
+      "name": "gcc-16",
+      "srcname": "gcc-16",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gcc-16"
     },
     {
       "repo": "debian_12_backports",
       "version": "12.2.0",
       "origversion": "12.2.0-14+deb12u1",
       "status": "outdated",
-      "name": "gcc-12"
+      "name": "gcc-12",
+      "srcname": "gcc-12",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gcc-12"
+    },
+    {
+      "repo": "debian_14",
+      "version": "16.1.0",
+      "origversion": "16.1.0-1",
+      "status": "newest",
+      "name": "gcc-16",
+      "srcname": "gcc-16",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gcc-16"
     },
     {
       "repo": "debian_experimental",
       "version": "15.3.0",
       "origversion": "15.3.0-1",
       "status": "outdated",
-      "name": "gcc-15"
+      "name": "gcc-15",
+      "srcname": "gcc-15",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gcc-15"
     }
   ],
   "ubuntu": [
     {
-      "repo": "ubuntu_25_10",
-      "version": "20250315",
-      "origversion": "20250315-1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": false
-    },
-    {
       "repo": "ubuntu_14_04",
-      "version": "20131116",
-      "origversion": "20131116-1ubuntu0.2",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": true
+      "version": "6",
+      "origversion": null,
+      "status": "outdated",
+      "name": "gcc-arm-none-eabi",
+      "srcname": "gcc-arm-none-eabi",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-arm-none-eabi"
     },
     {
       "repo": "ubuntu_16_04",
-      "version": "20160215",
-      "origversion": "20160215-1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": true
-    },
-    {
-      "repo": "ubuntu_18_04",
-      "version": "20170913",
-      "origversion": "20170913-1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": true
-    },
-    {
-      "repo": "ubuntu_24_04",
-      "version": "20240117",
-      "origversion": "20240117-1build1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": true
-    },
-    {
-      "repo": "ubuntu_20_04",
-      "version": "20200409",
-      "origversion": "20200409-1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": true
-    },
-    {
-      "repo": "ubuntu_22_04",
-      "version": "20211102",
-      "origversion": "20211102-1build1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": true
-    },
-    {
-      "repo": "ubuntu_25_04",
-      "version": "20250315",
-      "origversion": "20250315-1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": false
-    },
-    {
-      "repo": "ubuntu_26_04",
-      "version": "20260327",
-      "origversion": "20260327-1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": true
+      "version": "6.0.1",
+      "origversion": "6.0.1-0ubuntu1",
+      "status": "outdated",
+      "name": "gccgo-6",
+      "srcname": "gccgo-6",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gccgo-6"
     },
     {
       "repo": "ubuntu_26_10",
-      "version": "20260327",
-      "origversion": "20260327-1",
-      "status": "incorrect",
-      "name": "libiberty",
-      "lts": false
+      "version": "16.1.0",
+      "origversion": "16.1.0-2ubuntu1",
+      "status": "newest",
+      "name": "gcc-16",
+      "srcname": "gcc-16",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-16"
     },
     {
       "repo": "ubuntu_26_10_proposed",
@@ -152,7 +154,103 @@
       "origversion": "16.1.0-3ubuntu1",
       "status": "newest",
       "name": "gcc-16",
-      "lts": false
+      "srcname": "gcc-16",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-16"
+    },
+    {
+      "repo": "ubuntu_20_04",
+      "version": "10-20200411",
+      "origversion": "10-20200411-0ubuntu1",
+      "status": "outdated",
+      "name": "gcc-10",
+      "srcname": "gcc-10",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-10"
+    },
+    {
+      "repo": "ubuntu_18_04",
+      "version": "8-20180414",
+      "origversion": "8-20180414-1ubuntu2",
+      "status": "outdated",
+      "name": "gcc-8",
+      "srcname": "gcc-8",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-8"
+    },
+    {
+      "repo": "ubuntu_22_04",
+      "version": "12-20220319",
+      "origversion": "12-20220319-1ubuntu1",
+      "status": "outdated",
+      "name": "gcc-12",
+      "srcname": "gcc-12",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-12"
+    },
+    {
+      "repo": "ubuntu_25_10",
+      "version": "15.2.0",
+      "origversion": "15.2.0-4ubuntu4",
+      "status": "outdated",
+      "name": "gcc-15",
+      "srcname": "gcc-15",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-15"
+    },
+    {
+      "repo": "ubuntu_24_04",
+      "version": "14-20240412",
+      "origversion": "14-20240412-0ubuntu1",
+      "status": "outdated",
+      "name": "gcc-14",
+      "srcname": "gcc-14",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-14"
+    },
+    {
+      "repo": "ubuntu_25_04",
+      "version": "15-20250404",
+      "origversion": "15-20250404-0ubuntu1",
+      "status": "outdated",
+      "name": "gcc-15",
+      "srcname": "gcc-15",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-15"
+    },
+    {
+      "repo": "ubuntu_26_04",
+      "version": "15.2.0",
+      "origversion": "15.2.0-16ubuntu1",
+      "status": "outdated",
+      "name": "gcc-15",
+      "srcname": "gcc-15",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gcc-15"
     }
   ],
   "fedora": [
@@ -161,49 +259,98 @@
       "version": "14.2.0",
       "origversion": "1:14.2.0-1.fc39",
       "status": "outdated",
-      "name": "avr-gcc"
+      "name": "avr-gcc",
+      "srcname": "avr-gcc",
+      "summary": "Cross Compiling GNU GCC targeted at avr",
+      "licenses": [
+        "GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND MIT AND BSD-2-Clause"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/avr-gcc"
     },
     {
       "repo": "fedora_42",
       "version": "15.2.1",
       "origversion": "15.2.1-1.fc42",
       "status": "outdated",
-      "name": "cross-gcc"
+      "name": "cross-gcc",
+      "srcname": "cross-gcc",
+      "summary": "Cross C compiler",
+      "licenses": [
+        "GPL-3.0-or-later AND LGPL-3.0-or-later AND (GPL-3.0-or-later WITH GCC-exception-3.1) AND (GPL-3.0-or-later WITH Texinfo-exception) AND (LGPL-2.1-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GNU-compiler-exception) AND BSL-1.0 AND GFDL-1.3-or-later AND Linux-man-pages-copyleft-2-para AND SunPro AND BSD-1-Clause AND BSD-2-Clause AND BSD-2-Clause-Views AND BSD-3-Clause AND BSD-4-Clause AND BSD-Source-Code AND Zlib AND MIT AND Apache-2.0 AND (Apache-2.0 WITH LLVM-Exception) AND ZPL-2.1 AND ISC AND LicenseRef-Fedora-Public-Domain AND HP-1986 AND curl"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/cross-gcc"
     },
     {
       "repo": "fedora_40",
       "version": "14.2.1",
       "origversion": "14.2.1-3.fc40",
       "status": "outdated",
-      "name": "gcc"
+      "name": "gcc",
+      "srcname": "gcc",
+      "summary": "Various compilers (C, C++, Objective-C, ...)",
+      "licenses": [
+        "GPL-3.0-or-later AND LGPL-3.0-or-later AND (GPL-3.0-or-later WITH GCC-exception-3.1) AND (GPL-3.0-or-later WITH Texinfo-exception) AND (LGPL-2.1-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GNU-compiler-exception) AND BSL-1.0 AND GFDL-1.3-or-later AND Linux-man-pages-copyleft-2-para AND SunPro AND BSD-1-Clause AND BSD-2-Clause AND BSD-2-Clause-Views AND BSD-3-Clause AND BSD-4-Clause AND BSD-Source-Code AND Zlib AND MIT AND Apache-2.0 AND (Apache-2.0 WITH LLVM-Exception) AND ZPL-2.1 AND ISC AND LicenseRef-Fedora-Public-Domain AND HP-1986 AND curl AND Martin-Birgmeier AND HPND-Markus-Kuhn AND dtoa AND SMLNJ AND AMD-newlib AND OAR AND HPND-merchantability-variant AND HPND-Intel"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gcc"
     },
     {
       "repo": "fedora_41",
       "version": "15.1.0",
       "origversion": "1:15.1.0-1.fc41",
       "status": "outdated",
-      "name": "arm-none-eabi-gcc-cs"
+      "name": "arm-none-eabi-gcc-cs",
+      "srcname": "arm-none-eabi-gcc-cs",
+      "summary": "GNU GCC for cross-compilation for arm-none-eabi target",
+      "licenses": [
+        "GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND MIT AND BSD-2-Clause"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/arm-none-eabi-gcc-cs"
     },
     {
       "repo": "fedora_44",
-      "version": "16.1.1",
-      "origversion": "16.1.1-1.fc44",
-      "status": "incorrect",
-      "name": "cross-gcc"
+      "version": "16.0.1",
+      "origversion": "16.0.1-0.10.fc44",
+      "status": "outdated",
+      "name": "gcc",
+      "srcname": "gcc",
+      "summary": "Various compilers (C, C++, Objective-C, ...)",
+      "licenses": [
+        "GPL-3.0-or-later AND LGPL-3.0-or-later AND (GPL-3.0-or-later WITH GCC-exception-3.1) AND (GPL-3.0-or-later WITH Texinfo-exception) AND (LGPL-2.1-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GNU-compiler-exception) AND BSL-1.0 AND GFDL-1.3-or-later AND Linux-man-pages-copyleft-2-para AND SunPro AND BSD-1-Clause AND BSD-2-Clause AND BSD-2-Clause-Views AND BSD-3-Clause AND BSD-4-Clause AND BSD-Source-Code AND Zlib AND MIT AND Apache-2.0 AND (Apache-2.0 WITH LLVM-Exception) AND ZPL-2.1 AND ISC AND LicenseRef-Fedora-Public-Domain AND HP-1986 AND curl AND Martin-Birgmeier AND HPND-Markus-Kuhn AND dtoa AND SMLNJ AND AMD-newlib AND OAR AND HPND-merchantability-variant AND HPND-Intel"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gcc"
     },
     {
       "repo": "fedora_43",
       "version": "15.2.1",
       "origversion": "15.2.1-1.fc43",
       "status": "outdated",
-      "name": "cross-gcc"
+      "name": "cross-gcc",
+      "srcname": "cross-gcc",
+      "summary": "Cross C compiler",
+      "licenses": [
+        "GPL-3.0-or-later AND LGPL-3.0-or-later AND (GPL-3.0-or-later WITH GCC-exception-3.1) AND (GPL-3.0-or-later WITH Texinfo-exception) AND (LGPL-2.1-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GNU-compiler-exception) AND BSL-1.0 AND GFDL-1.3-or-later AND Linux-man-pages-copyleft-2-para AND SunPro AND BSD-1-Clause AND BSD-2-Clause AND BSD-2-Clause-Views AND BSD-3-Clause AND BSD-4-Clause AND BSD-Source-Code AND Zlib AND MIT AND Apache-2.0 AND (Apache-2.0 WITH LLVM-Exception) AND ZPL-2.1 AND ISC AND LicenseRef-Fedora-Public-Domain AND HP-1986 AND curl"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/cross-gcc"
     },
     {
       "repo": "fedora_rawhide",
-      "version": "16.1.1",
-      "origversion": "16.1.1-1.fc45",
-      "status": "incorrect",
-      "name": "cross-gcc"
+      "version": "15.2.1",
+      "origversion": "15.2.1-7.fc45",
+      "status": "outdated",
+      "name": "gcc15",
+      "srcname": "gcc15",
+      "summary": "Various compatibility compilers (C, C++, Fortran, ...)",
+      "licenses": [
+        "GPL-3.0-or-later AND LGPL-3.0-or-later AND (GPL-3.0-or-later WITH GCC-exception-3.1) AND (GPL-3.0-or-later WITH Texinfo-exception) AND (LGPL-2.1-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GCC-exception-2.0) AND (GPL-2.0-or-later WITH GNU-compiler-exception) AND BSL-1.0 AND GFDL-1.3-or-later AND Linux-man-pages-copyleft-2-para AND SunPro AND BSD-1-Clause AND BSD-2-Clause AND BSD-2-Clause-Views AND BSD-3-Clause AND BSD-4-Clause AND BSD-Source-Code AND Zlib AND MIT AND Apache-2.0 AND (Apache-2.0 WITH LLVM-Exception) AND ZPL-2.1 AND curl"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gcc15"
     }
   ],
   "opensuse": [
@@ -212,59 +359,87 @@
       "version": "14.2.0",
       "origversion": "14.2.0+git10526-150000.1.3.2",
       "status": "outdated",
-      "name": "cross-aarch64-gcc14-bootstrap"
+      "name": "cross-aarch64-gcc14-bootstrap",
+      "srcname": "cross-aarch64-gcc14-bootstrap",
+      "summary": "The GNU Compiler Collection targeting aarch64",
+      "licenses": [
+        "GPL-3.0-or-later"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/cross-aarch64-gcc14-bootstrap"
     },
     {
       "repo": "opensuse_leap_15_6",
       "version": "15.2.0",
       "origversion": "15.2.0+git10201-150000.1.6.1",
       "status": "outdated",
-      "name": "gcc15"
+      "name": "gcc15",
+      "srcname": "gcc15",
+      "summary": "The GNU C Compiler and Support Files",
+      "licenses": [
+        "GPL-3.0-or-later"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/gcc15"
     },
     {
       "repo": "opensuse_tumbleweed",
-      "version": "16.1.1",
-      "origversion": "16.1.1+git8886-1.2",
-      "status": "incorrect",
-      "name": "cross-s390x-gcc16"
+      "version": "15.3.0",
+      "origversion": "15.3.0+git11272-1.2",
+      "status": "outdated",
+      "name": "cross-aarch64-gcc15",
+      "srcname": "cross-aarch64-gcc15",
+      "summary": "The GNU Compiler Collection targeting aarch64",
+      "licenses": [
+        "GPL-3.0-or-later"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/cross-aarch64-gcc15"
     }
   ],
   "gentoo": [
     {
       "repo": "gentoo",
-      "version": "17.0.9999",
+      "version": "16.1.0",
       "origversion": null,
-      "status": "rolling",
-      "name": "sys-devel/gcc"
+      "status": "newest",
+      "name": "sys-devel/gcc",
+      "srcname": "sys-devel/gcc",
+      "summary": "The GNU Compiler Collection",
+      "licenses": [
+        "GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://packages.gentoo.org/packages/sys-devel/gcc"
     }
   ],
   "mint": [
     {
       "release": "Mint 22.3 \"zena\"",
-      "version": "20240117",
+      "version": "14-20240412",
       "source": "estymacja z bazy Ubuntu 24.04",
       "estimated": true
     },
     {
       "release": "Mint 22.2 \"zara\"",
-      "version": "20240117",
+      "version": "14-20240412",
       "source": "estymacja z bazy Ubuntu 24.04",
       "estimated": true
     },
     {
       "release": "Mint 22.1 \"xia\"",
-      "version": "20240117",
+      "version": "14-20240412",
       "source": "estymacja z bazy Ubuntu 24.04",
       "estimated": true
     },
     {
       "release": "Mint 22 \"wilma\"",
-      "version": "20240117",
+      "version": "14-20240412",
       "source": "estymacja z bazy Ubuntu 24.04",
       "estimated": true
     }
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:45:02.055Z"
+  "generated_at": "2026-07-20T14:19:11.102Z"
 }

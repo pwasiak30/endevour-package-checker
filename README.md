@@ -2,8 +2,10 @@
 
 Wyszukiwarka i porównywarka wersji pakietów: **EndeavourOS** (core/extra/multilib Arch
 Linux + AUR) w zestawieniu z najnowszymi wersjami tego samego pakietu w: **Debian**,
-**Ubuntu** (wszystkie wydania, w tym LTS), **Fedora**, **openSUSE**, **Gentoo** i
-**Linux Mint**.
+**Ubuntu** (wszystkie wydania, w tym LTS), **Fedora**, **openSUSE**, **Gentoo**,
+**Linux Mint** i — jeśli dostępny — **Windows** (Chocolatey). Przy każdej wersji:
+link do strony projektu/pakietu w danej dystrybucji, opis, licencja i (jeśli
+Repology to zgłasza) ostrzeżenie o znanych podatnościach (CVE).
 
 **Działa wyłącznie na GitHub — bez żadnego zewnętrznego hostingu/backendu.**
 
@@ -33,6 +35,27 @@ GitHubem.
 | EndeavourOS — AUR | [AUR RPC v5](https://aur.archlinux.org/rpc/) |
 | Debian, Ubuntu, Fedora, openSUSE, Gentoo | [Repology.org API](https://repology.org/api) (śledzi dziesiątki wydań każdej dystrybucji naraz) |
 | Linux Mint | estymacja z wersji bazowego wydania Ubuntu (Repology nie śledzi Mint osobno) |
+| Windows | [Chocolatey community repository](https://community.chocolatey.org/) (OData API), dopasowanie po identyfikatorze pakietu — best-effort |
+
+### Linki i dodatkowe informacje
+
+Każdy wpis ma (jeśli źródło je udostępnia) link do strony projektu/pakietu:
+
+- EndeavourOS/AUR: link do strony pakietu na archlinux.org / aur.archlinux.org + strona domowa projektu + opis.
+- Debian/Ubuntu/Fedora/openSUSE/Gentoo: stabilny, niezależny od wydania link do trackera
+  pakietu (`tracker.debian.org`, `launchpad.net/ubuntu/+source/...`,
+  `src.fedoraproject.org/rpms/...`, `software.opensuse.org/package/...`,
+  `packages.gentoo.org/packages/...`), licencja, krótki opis, oraz ostrzeżenie
+  ⚠️ CVE, jeśli Repology oznaczyło tę wersję jako podatną.
+- Windows (Chocolatey): strona pakietu, strona domowa projektu, link do źródła paczki (zwykle GitHub).
+- Zawsze widoczny link „Zobacz na Repology.org” z pełnym zestawieniem wszystkich
+  śledzonych repozytoriów dla danego pakietu naraz.
+
+Repology samo oznacza część wpisów jako niewiarygodne (status `incorrect` /
+`untrusted` / `ignored`, np. błędne dopasowanie projektu) — takie wpisy są
+pomijane. Podobnie "live" ebuildy Gentoo (wersja `9999`, status `rolling`) nie
+są traktowane jako "najnowsza wersja" w porównaniu, bo to nie jest realny numer
+wydania, tylko wskaźnik gita HEAD.
 
 Celowo pominięte: małe własne repo EndeavourOS (`endeavouros`, pakiety
 `eos-*`/motywy/branding) — jego baza jest skompresowana XZ, co komplikowałoby

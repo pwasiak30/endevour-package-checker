@@ -1,17 +1,32 @@
 {
   "query": "vim",
+  "repology_project_url": "https://repology.org/project/vim/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "extra",
         "pkgname": "vim",
         "version": "9.2.0804-1",
-        "url": "https://archlinux.org/packages/extra/x86_64/vim/"
+        "page_url": "https://archlinux.org/packages/extra/x86_64/vim/",
+        "homepage": "https://www.vim.org",
+        "description": "Vi Improved, a highly configurable, improved version of the vi text editor",
+        "licenses": [
+          "custom:vim"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
+  },
+  "windows": {
+    "id": "vim",
+    "title": "Vim",
+    "version": "9.2.810",
+    "description": "Vim is a highly configurable text editor built to enable efficient text editing. It is an improved version of the vi editor distributed with most UNIX systems.\n\nVim is often called a programmer's editor, and so useful for programming that many consider it an entire IDE. It's not just for programmers, though. Vim is perfect for all kinds of text editing, from composing email to editing configuration files.\n\n## Features\n\n* **Vim**: Vim terminal(CLI) application can be used from Powershell and Command Prompt.\n\n* **GVim**: The GUI version of Vim provides full featured Windows GUI application experience.\n\n* **Terminal Integration**: Batch files are created to provide `vim`, `gvim`, `evim`, `view`, `gview`, `vimdiff`, `gvimdiff` and `vimtutor` command on terminal use.\n\n* **Shell Integration**: Vim is added in `Open with ...` context menu. And by default `Edit with Vim` context menu is created to open files whose extensions are associated with other applications.\n\n## Package parameters\n\n- `/InstallDir` - Override the installation directory. By default, the software is installed in `$ChocolateyToolsLocation`, it's default value is `C:\\tools`. You can include spaces. See the example below.\n- `/RestartExplorer` - Restart Explorer to unlock `GVimExt.dll` used for `Edit with Vim` context menu feature.\n- `/NoDefaultVimrc` - Don't create default `_vimrc` file.\n- `/NoContextmenu` - Don't create `Edit with Vim` context menu.\n- `/NoDesktopShortcuts` - Don't create shortcuts on the desktop.\n\nExample: `choco install vim --params \"'/NoDesktopShortcuts /InstallDir:C:\\path\\to\\your dir'\"`\n\n## Notes\n\n- **Antivirus Detections**. Some files in the package are being picked up by VirusTotal as malicious. Please see these [GitHub issues](https://github.com/vim/vim-win32-installer/issues?q=is%3Aissue+is%3Aclosed+virus) for more information.\n- This package uses the ZIP build to install to provide installation parameters.\n- All compilation of the software is automated and performed on Appveyor. The building status is open.\n- This package provides an official build. Similar package `vim-tux` is from a well-known unofficial vim building project. Unlike `vim-tux`, this package can take some installation parameters.\n- **If the package is out of date please check [Version History](#versionhistory) for the latest submitted version. If you have a question, please ask it in [Chocolatey Community Package Discussions](https://github.com/chocolatey-community/chocolatey-packages/discussions) or raise an issue on the [Chocolatey Community Packages Repository](https://github.com/chocolatey-community/chocolatey-packages/issues) if you have problems with the package. Disqus comments will generally not be responded to.**",
+    "homepage": "https://www.vim.org/",
+    "package_source_url": "https://github.com/chocolatey-community/chocolatey-packages/tree/master/automatic/vim",
+    "page_url": "https://community.chocolatey.org/packages/vim"
   },
   "reference_version": "9.2.0804-1",
   "debian": [
@@ -20,35 +35,60 @@
       "version": "8.2.2434",
       "origversion": "2:8.2.2434-3+deb11u3",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/vim"
     },
     {
       "repo": "debian_12",
       "version": "9.0.1378",
       "origversion": "2:9.0.1378-2+deb12u2",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/vim"
     },
     {
       "repo": "debian_13",
       "version": "9.1.1230",
       "origversion": "2:9.1.1230-2",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/vim"
     },
     {
       "repo": "debian_14",
       "version": "9.2.0524",
       "origversion": "2:9.2.0524-1",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/vim"
     },
     {
       "repo": "debian_unstable",
       "version": "9.2.0782",
       "origversion": "2:9.2.0782-1",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/vim"
     }
   ],
   "ubuntu": [
@@ -58,7 +98,12 @@
       "origversion": "2:7.4.052-1ubuntu3.1",
       "status": "outdated",
       "name": "vim",
-      "lts": true
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_16_04",
@@ -66,7 +111,12 @@
       "origversion": "2:7.4.1689-3ubuntu1",
       "status": "outdated",
       "name": "vim",
-      "lts": true
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_18_04",
@@ -74,7 +124,12 @@
       "origversion": "2:8.0.1453-1ubuntu1",
       "status": "outdated",
       "name": "vim",
-      "lts": true
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_20_04",
@@ -82,7 +137,12 @@
       "origversion": "2:8.1.2269-1ubuntu5.32",
       "status": "outdated",
       "name": "vim",
-      "lts": true
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_22_04",
@@ -90,7 +150,12 @@
       "origversion": "2:8.2.3995-1ubuntu2",
       "status": "outdated",
       "name": "vim",
-      "lts": true
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_24_04",
@@ -98,7 +163,12 @@
       "origversion": "2:9.1.0016-1ubuntu7",
       "status": "outdated",
       "name": "vim",
-      "lts": true
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_25_04",
@@ -106,7 +176,12 @@
       "origversion": "2:9.1.0967-1ubuntu4.1",
       "status": "outdated",
       "name": "vim",
-      "lts": false
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_25_10",
@@ -114,7 +189,12 @@
       "origversion": "2:9.1.0967-1ubuntu6",
       "status": "outdated",
       "name": "vim",
-      "lts": false
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_26_04",
@@ -122,7 +202,12 @@
       "origversion": "2:9.1.2141-1ubuntu4",
       "status": "outdated",
       "name": "vim",
-      "lts": true
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_26_10",
@@ -130,7 +215,12 @@
       "origversion": "2:9.2.0461-1ubuntu1",
       "status": "outdated",
       "name": "vim",
-      "lts": false
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     },
     {
       "repo": "ubuntu_26_10_proposed",
@@ -138,7 +228,12 @@
       "origversion": "2:9.2.0782-1ubuntu2",
       "status": "outdated",
       "name": "vim",
-      "lts": false
+      "srcname": "vim",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/vim"
     }
   ],
   "fedora": [
@@ -147,49 +242,98 @@
       "version": "9.1.825",
       "origversion": "2:9.1.825-1.fc39",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "The VIM editor",
+      "licenses": [
+        "Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0 WITH Swift-exception"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/vim"
     },
     {
       "repo": "fedora_40",
       "version": "9.1.1275",
       "origversion": "2:9.1.1275-1.fc40",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "The VIM editor",
+      "licenses": [
+        "Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0 WITH Swift-exception"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/vim"
     },
     {
       "repo": "fedora_41",
       "version": "9.1.1914",
       "origversion": "2:9.1.1914-1.fc41",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "The VIM editor",
+      "licenses": [
+        "Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0 WITH Swift-exception"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/vim"
     },
     {
       "repo": "fedora_42",
       "version": "9.2.390",
       "origversion": "2:9.2.390-1.fc42",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "The VIM editor",
+      "licenses": [
+        "Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0 WITH Swift-exception"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/vim"
     },
     {
       "repo": "fedora_43",
       "version": "9.2.780",
       "origversion": "2:9.2.780-1.fc43",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "The VIM editor",
+      "licenses": [
+        "Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0 WITH Swift-exception"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/vim"
     },
     {
       "repo": "fedora_44",
       "version": "9.2.782",
       "origversion": "2:9.2.782-1.fc44",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "The VIM editor",
+      "licenses": [
+        "Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0 WITH Swift-exception"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/vim"
     },
     {
       "repo": "fedora_rawhide",
       "version": "9.2.782",
       "origversion": "2:9.2.782-1.fc45",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "The VIM editor",
+      "licenses": [
+        "Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0 AND Apache-2.0 WITH Swift-exception"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/vim"
     }
   ],
   "opensuse": [
@@ -198,30 +342,58 @@
       "version": "9.1.0836",
       "origversion": "9.1.0836-150500.20.15.1",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "Vi IMproved",
+      "licenses": [
+        "Vim"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/vim"
     },
     {
       "repo": "opensuse_leap_15_6",
       "version": "9.1.1629",
       "origversion": "9.1.1629-150500.20.33.1",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "Vi IMproved",
+      "licenses": [
+        "Vim"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/vim"
     },
     {
       "repo": "opensuse_tumbleweed",
       "version": "9.2.0780",
       "origversion": "9.2.0780-1.1",
       "status": "outdated",
-      "name": "vim"
+      "name": "vim",
+      "srcname": "vim",
+      "summary": "Vi IMproved",
+      "licenses": [
+        "Vim"
+      ],
+      "vulnerable": false,
+      "project_link": "https://software.opensuse.org/package/vim"
     }
   ],
   "gentoo": [
     {
       "repo": "gentoo",
-      "version": "9999",
-      "origversion": null,
-      "status": "rolling",
-      "name": "app-editors/vim-core"
+      "version": "9.1.1652",
+      "origversion": "9.1.1652-r3",
+      "status": "outdated",
+      "name": "app-editors/vim-core",
+      "srcname": "app-editors/vim-core",
+      "summary": "vim and gvim shared files",
+      "licenses": [
+        "vim"
+      ],
+      "vulnerable": true,
+      "project_link": "https://packages.gentoo.org/packages/app-editors/vim-core"
     }
   ],
   "mint": [
@@ -252,5 +424,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:44:12.734Z"
+  "generated_at": "2026-07-20T14:24:43.122Z"
 }

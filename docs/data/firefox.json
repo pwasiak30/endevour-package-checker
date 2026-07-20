@@ -1,17 +1,32 @@
 {
   "query": "firefox",
+  "repology_project_url": "https://repology.org/project/firefox/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "extra",
         "pkgname": "firefox",
         "version": "152.0.6-1",
-        "url": "https://archlinux.org/packages/extra/x86_64/firefox/"
+        "page_url": "https://archlinux.org/packages/extra/x86_64/firefox/",
+        "homepage": "https://www.mozilla.org/firefox/",
+        "description": "Fast, Private & Safe Web Browser",
+        "licenses": [
+          "MPL-2.0"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
+  },
+  "windows": {
+    "id": "Firefox",
+    "title": "Mozilla Firefox",
+    "version": "152.0.6",
+    "description": "Bringing together all kinds of awesomeness to make browsing better for you.\n\n## Features\n\n- A powerful, new engine that’s built for rapidfire performance.\n- Better, faster page loading that uses less computer memory.\n- Gorgeous design and smart features for intelligent browsing.\n- Instantly import your online info and favorites from any other browser.\n- The most powerful private browsing mode with added tracking protection.\n- Firefox Quantum features: screenshots, pocket, gaming & VR, library.\n- Customization Features - addons & extensions, themes, toolbar.\n- Synced across devices - passwords, bookmarks, tabs and more.\n- Ad tracker blocking.\n- Password manager.\n\n## Package Parameters\n\n- `/l:LOCALE` - Install given Firefox locale. See the [official page](https://releases.mozilla.org/pub/firefox/releases/latest/README.txt) for a complete list of available locales.\n- `/UseMozillaFallback` Makes a request to mozilla.org and reads the supported Language Culture code from the website.\n\nCommand-line options for installer configuration. See the [official page](https://firefox-source-docs.mozilla.org/browser/installer/windows/installer/FullConfig.html) for details and defaults.\n\n- `/InstallDir:PATH`\n- `/NoTaskbarShortcut` Do not create Taskbar Shortcut\n- `/NoDesktopShortcut` Do not create Desktop Shortcut\n- `/NoStartMenuShortcut` Do not create Start Menu Shortcut\n- `/NoMaintenanceService` Do not install Maintenance Service\n- `/RemoveDistributionDir` Remove Distribution directory on installation/update. (This is the default behavior of the Firefox Installer, but not for this Chocolatey Package)\n- `/NoAutoUpdate` Sets a policies.json file to not update Firefox and does not install the Maintenance Service\n\n### Examples\n\n`choco install Firefox --params \"/l:en-GB\"`\n`choco install Firefox --params \"/NoTaskbarShortcut /NoDesktopShortcut /NoAutoUpdate\"`\n`choco install Firefox --params \"/l:en-GB /RemoveDistributionDir\"`\n\n## Notes\n\n- Looking for Firefox Developer Edition? Install the [firefox-dev](/packages/firefox-dev) package.\n- Looking for Firefox Extended Support Release? Install the [FirefoxESR](/packages/FirefoxESR) package.\n- If locale package parameter is not present, this package installs Firefox in the first language which matches this list:\n  1. If Firefox is already installed it uses the same language as the already installed one.\n  1. The Windows system language.\n  1. Language Culture code specified on Mozilla website (only when `/UseMozillaFallback` is specified).\n  1. If Firefox does not support the system language, it will fall back to `en-US`.\n- **If the package is out of date please check [Version History](#versionhistory) for the latest submitted version. If you have a question, please ask it in [Chocolatey Community Package Discussions](https://github.com/chocolatey-community/chocolatey-packages/discussions) or raise an issue on the [Chocolatey Community Packages Repository](https://github.com/chocolatey-community/chocolatey-packages/issues) if you have problems with the package. Disqus comments will generally not be responded to.**",
+    "homepage": "https://www.mozilla.org/en-US/firefox/new/",
+    "package_source_url": "https://github.com/chocolatey-community/chocolatey-packages/tree/master/automatic/firefox",
+    "page_url": "https://community.chocolatey.org/packages/Firefox"
   },
   "reference_version": "152.0.6-1",
   "debian": [
@@ -20,35 +35,60 @@
       "version": "140.12.0",
       "origversion": "140.12.0esr-1~deb11u1",
       "status": "outdated",
-      "name": "firefox-esr"
+      "name": "firefox-esr",
+      "srcname": "firefox-esr",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/firefox-esr"
     },
     {
       "repo": "debian_12",
       "version": "140.12.0",
       "origversion": "140.12.0esr-1~deb12u1",
       "status": "outdated",
-      "name": "firefox-esr"
+      "name": "firefox-esr",
+      "srcname": "firefox-esr",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/firefox-esr"
     },
     {
       "repo": "debian_13",
       "version": "140.12.0",
       "origversion": "140.12.0esr-1~deb13u1",
       "status": "outdated",
-      "name": "firefox-esr"
+      "name": "firefox-esr",
+      "srcname": "firefox-esr",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/firefox-esr"
     },
     {
       "repo": "debian_14",
       "version": "140.12.0",
       "origversion": "140.12.0esr-1",
       "status": "outdated",
-      "name": "firefox-esr"
+      "name": "firefox-esr",
+      "srcname": "firefox-esr",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/firefox-esr"
     },
     {
       "repo": "debian_unstable",
       "version": "152.0.6",
       "origversion": "152.0.6-1",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/firefox"
     }
   ],
   "ubuntu": [
@@ -58,7 +98,12 @@
       "origversion": "66.0.3+build1-0ubuntu0.14.04.1",
       "status": "outdated",
       "name": "firefox",
-      "lts": true
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_16_04",
@@ -66,7 +111,12 @@
       "origversion": "88.0+build2-0ubuntu0.16.04.1",
       "status": "outdated",
       "name": "firefox",
-      "lts": true
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_18_04",
@@ -74,7 +124,12 @@
       "origversion": "113.0.2+build1-0ubuntu0.18.04.1",
       "status": "outdated",
       "name": "firefox",
-      "lts": true
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_20_04",
@@ -82,7 +137,12 @@
       "origversion": "136.0+build3-0ubuntu0.20.04.1",
       "status": "outdated",
       "name": "firefox",
-      "lts": true
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_22_04",
@@ -90,7 +150,12 @@
       "origversion": "1:1snap1-0ubuntu2",
       "status": "outdated",
       "name": "firefox",
-      "lts": true
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_24_04",
@@ -98,7 +163,12 @@
       "origversion": "1:1snap1-0ubuntu5",
       "status": "outdated",
       "name": "firefox",
-      "lts": true
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_25_04",
@@ -106,7 +176,12 @@
       "origversion": "1:1snap1-0ubuntu7",
       "status": "outdated",
       "name": "firefox",
-      "lts": false
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_25_10",
@@ -114,7 +189,12 @@
       "origversion": "1:1snap1-0ubuntu7",
       "status": "outdated",
       "name": "firefox",
-      "lts": false
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_26_04",
@@ -122,7 +202,12 @@
       "origversion": "1:1snap1-0ubuntu8",
       "status": "outdated",
       "name": "firefox",
-      "lts": true
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     },
     {
       "repo": "ubuntu_26_10",
@@ -130,7 +215,12 @@
       "origversion": "1:1snap1-0ubuntu10",
       "status": "outdated",
       "name": "firefox",
-      "lts": false
+      "srcname": "firefox",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/firefox"
     }
   ],
   "fedora": [
@@ -139,49 +229,98 @@
       "version": "132.0.1",
       "origversion": "132.0.1-1.fc39",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": "Mozilla Firefox Web browser",
+      "licenses": [
+        "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/firefox"
     },
     {
       "repo": "fedora_40",
       "version": "137.0",
       "origversion": "137.0-2.fc40",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": "Mozilla Firefox Web browser",
+      "licenses": [
+        "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/firefox"
     },
     {
       "repo": "fedora_41",
       "version": "145.0",
       "origversion": "145.0-2.fc41",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": "Mozilla Firefox Web browser",
+      "licenses": [
+        "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/firefox"
     },
     {
       "repo": "fedora_42",
       "version": "151.0",
       "origversion": "151.0-2.fc42",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": "Mozilla Firefox Web browser",
+      "licenses": [
+        "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/firefox"
     },
     {
       "repo": "fedora_43",
       "version": "152.0.6",
       "origversion": "152.0.6-1.fc43",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": "Mozilla Firefox Web browser",
+      "licenses": [
+        "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/firefox"
     },
     {
       "repo": "fedora_44",
       "version": "152.0.6",
       "origversion": "152.0.6-1.fc44",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": "Mozilla Firefox Web browser",
+      "licenses": [
+        "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/firefox"
     },
     {
       "repo": "fedora_rawhide",
       "version": "152.0.6",
       "origversion": "152.0.6-1.fc45",
       "status": "outdated",
-      "name": "firefox"
+      "name": "firefox",
+      "srcname": "firefox",
+      "summary": "Mozilla Firefox Web browser",
+      "licenses": [
+        "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/firefox"
     }
   ],
   "opensuse": [
@@ -190,21 +329,42 @@
       "version": "140.6.0",
       "origversion": "140.6.0-150200.152.213.1",
       "status": "outdated",
-      "name": "MozillaFirefox"
+      "name": "MozillaFirefox",
+      "srcname": "MozillaFirefox",
+      "summary": "Mozilla Firefox Web Browser",
+      "licenses": [
+        "MPL-2.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/MozillaFirefox"
     },
     {
       "repo": "opensuse_tumbleweed",
       "version": "152.0.4",
       "origversion": "152.0.4-1.1",
       "status": "outdated",
-      "name": "MozillaFirefox"
+      "name": "MozillaFirefox",
+      "srcname": "MozillaFirefox",
+      "summary": "Mozilla Firefox Web Browser",
+      "licenses": [
+        "MPL-2.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/MozillaFirefox"
     },
     {
       "repo": "opensuse_leap_15_5",
       "version": "128.5.1",
       "origversion": "128.5.1-150200.152.164.1",
       "status": "outdated",
-      "name": "MozillaFirefox"
+      "name": "MozillaFirefox",
+      "srcname": "MozillaFirefox",
+      "summary": "Mozilla Firefox Web Browser",
+      "licenses": [
+        "MPL-2.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/MozillaFirefox"
     }
   ],
   "gentoo": [
@@ -213,7 +373,16 @@
       "version": "153.0",
       "origversion": null,
       "status": "newest",
-      "name": "www-client/firefox-bin"
+      "name": "www-client/firefox-bin",
+      "srcname": "www-client/firefox-bin",
+      "summary": "Firefox Web Browser",
+      "licenses": [
+        "MPL-2.0",
+        "GPL-2",
+        "LGPL-2.1"
+      ],
+      "vulnerable": false,
+      "project_link": "https://packages.gentoo.org/packages/www-client/firefox-bin"
     }
   ],
   "mint": [
@@ -244,5 +413,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:40:45.948Z"
+  "generated_at": "2026-07-20T14:18:44.953Z"
 }

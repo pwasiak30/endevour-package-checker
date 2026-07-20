@@ -1,17 +1,32 @@
 {
   "query": "python",
+  "repology_project_url": "https://repology.org/project/python/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "core",
         "pkgname": "python",
         "version": "3.14.6-1",
-        "url": "https://archlinux.org/packages/core/x86_64/python/"
+        "page_url": "https://archlinux.org/packages/core/x86_64/python/",
+        "homepage": "https://www.python.org/",
+        "description": "The Python programming language",
+        "licenses": [
+          "PSF-2.0"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
+  },
+  "windows": {
+    "id": "python",
+    "title": "Python",
+    "version": "3.14.6",
+    "description": "Python is a programming language that lets you work more quickly and integrate your systems more effectively. You can learn to use Python and see almost immediate gains in productivity and lower maintenance costs.\n\n## Notes\n\n- This package depends on the the latest major version of python package.\n- This package do not support package parameters, please install the package [python314](https://chocolatey.org/packages/python314) directly when using package parameters.\n- **If the package is out of date please check [Version History](#versionhistory) for the latest submitted version. If you have a question, please ask it in [Chocolatey Community Package Discussions](https://github.com/chocolatey-community/chocolatey-packages/discussions) or raise an issue on the [Chocolatey Community Packages Repository](https://github.com/chocolatey-community/chocolatey-packages/issues) if you have problems with the package. Disqus comments will generally not be responded to.**",
+    "homepage": "http://www.python.org/",
+    "package_source_url": "https://github.com/chocolatey-community/chocolatey-packages/tree/master/automatic/python",
+    "page_url": "https://community.chocolatey.org/packages/python"
   },
   "reference_version": "3.14.6-1",
   "debian": [
@@ -20,42 +35,72 @@
       "version": "3.9.2",
       "origversion": "3.9.2-1+deb11u7",
       "status": "outdated",
-      "name": "python3.9"
+      "name": "python3.9",
+      "srcname": "python3.9",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/python3.9"
     },
     {
       "repo": "debian_12",
       "version": "3.11.2",
       "origversion": "3.11.2-6+deb12u3",
       "status": "outdated",
-      "name": "python3.11"
+      "name": "python3.11",
+      "srcname": "python3.11",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/python3.11"
     },
     {
       "repo": "debian_13",
       "version": "3.13.5",
       "origversion": "3.13.5-2+deb13u3",
       "status": "outdated",
-      "name": "python3.13"
+      "name": "python3.13",
+      "srcname": "python3.13",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/python3.13"
     },
     {
       "repo": "debian_14",
       "version": "3.14.6",
       "origversion": "3.14.6-1",
       "status": "newest",
-      "name": "python3.14"
+      "name": "python3.14",
+      "srcname": "python3.14",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/python3.14"
     },
     {
       "repo": "debian_unstable",
       "version": "3.14.6",
       "origversion": "3.14.6-1",
       "status": "newest",
-      "name": "python3.14"
+      "name": "python3.14",
+      "srcname": "python3.14",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/python3.14"
     },
     {
       "repo": "debian_experimental",
       "version": "3.15.0~b3",
       "origversion": "3.15.0~b3-1",
       "status": "legacy",
-      "name": "python3.15"
+      "name": "python3.15",
+      "srcname": "python3.15",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/python3.15"
     }
   ],
   "ubuntu": [
@@ -65,7 +110,12 @@
       "origversion": "3.5.2-2ubuntu0~16.04.4~14.04.1",
       "status": "outdated",
       "name": "python3.5",
-      "lts": true
+      "srcname": "python3.5",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.5"
     },
     {
       "repo": "ubuntu_16_04",
@@ -73,7 +123,12 @@
       "origversion": "3.5.2-2ubuntu0~16.04.13",
       "status": "outdated",
       "name": "python3.5",
-      "lts": true
+      "srcname": "python3.5",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.5"
     },
     {
       "repo": "ubuntu_18_04",
@@ -81,7 +136,12 @@
       "origversion": "3.8.0-3ubuntu1~18.04.2",
       "status": "outdated",
       "name": "python3.8",
-      "lts": true
+      "srcname": "python3.8",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.8"
     },
     {
       "repo": "ubuntu_20_04",
@@ -89,7 +149,12 @@
       "origversion": "3.9.5-3ubuntu0~20.04.1",
       "status": "outdated",
       "name": "python3.9",
-      "lts": true
+      "srcname": "python3.9",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.9"
     },
     {
       "repo": "ubuntu_22_04",
@@ -97,7 +162,12 @@
       "origversion": "3.11.0~rc1-1~22.04",
       "status": "outdated",
       "name": "python3.11",
-      "lts": true
+      "srcname": "python3.11",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.11"
     },
     {
       "repo": "ubuntu_24_04",
@@ -105,7 +175,12 @@
       "origversion": "3.12.3-1ubuntu0.15",
       "status": "outdated",
       "name": "python3.12",
-      "lts": true
+      "srcname": "python3.12",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.12"
     },
     {
       "repo": "ubuntu_25_04",
@@ -113,7 +188,12 @@
       "origversion": "3.13.3-1ubuntu0.5",
       "status": "outdated",
       "name": "python3.13",
-      "lts": false
+      "srcname": "python3.13",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.13"
     },
     {
       "repo": "ubuntu_25_10",
@@ -121,7 +201,12 @@
       "origversion": "3.14.0-1",
       "status": "outdated",
       "name": "python3.14",
-      "lts": false
+      "srcname": "python3.14",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.14"
     },
     {
       "repo": "ubuntu_26_04",
@@ -129,7 +214,12 @@
       "origversion": "3.14.4-1",
       "status": "outdated",
       "name": "python3.14",
-      "lts": true
+      "srcname": "python3.14",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.14"
     },
     {
       "repo": "ubuntu_26_10",
@@ -137,7 +227,12 @@
       "origversion": "3.15.0~b1-3",
       "status": "outdated",
       "name": "python3.15",
-      "lts": false
+      "srcname": "python3.15",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/python3.15"
     }
   ],
   "fedora": [
@@ -146,49 +241,98 @@
       "version": "3.14.0~a1",
       "origversion": "3.14.0~a1-2.fc39",
       "status": "outdated",
-      "name": "python3.14"
+      "name": "python3.14",
+      "srcname": "python3.14",
+      "summary": "Version 3.14 of the Python interpreter",
+      "licenses": [
+        "Python-2.0.1"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/python3.14"
     },
     {
       "repo": "fedora_43",
       "version": "3.15.0~b3",
       "origversion": "3.15.0~b3-1.fc43",
       "status": "outdated",
-      "name": "python3.15"
+      "name": "python3.15",
+      "srcname": "python3.15",
+      "summary": "Version 3.15 of the Python interpreter",
+      "licenses": [
+        "Python-2.0.1"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/python3.15"
     },
     {
       "repo": "fedora_40",
       "version": "3.14.0~a7",
       "origversion": "3.14.0~a7-2.fc40",
       "status": "outdated",
-      "name": "python3.14"
+      "name": "python3.14",
+      "srcname": "python3.14",
+      "summary": "Version 3.14 of the Python interpreter",
+      "licenses": [
+        "Python-2.0.1"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/python3.14"
     },
     {
       "repo": "fedora_41",
       "version": "3.15.0~a2",
       "origversion": "3.15.0~a2-1.fc41",
       "status": "outdated",
-      "name": "python3.15"
+      "name": "python3.15",
+      "srcname": "python3.15",
+      "summary": "Version 3.15 of the Python interpreter",
+      "licenses": [
+        "Python-2.0.1"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/python3.15"
     },
     {
       "repo": "fedora_42",
       "version": "3.15.0~b1",
       "origversion": "3.15.0~b1-1.fc42",
       "status": "outdated",
-      "name": "python3.15"
+      "name": "python3.15",
+      "srcname": "python3.15",
+      "summary": "Version 3.15 of the Python interpreter",
+      "licenses": [
+        "Python-2.0.1"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/python3.15"
     },
     {
       "repo": "fedora_44",
       "version": "3.15.0~a7",
       "origversion": "3.15.0~a7-1.fc44",
       "status": "legacy",
-      "name": "python3.15"
+      "name": "python3.15",
+      "srcname": "python3.15",
+      "summary": "Version 3.15 of the Python interpreter",
+      "licenses": [
+        "Python-2.0.1"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/python3.15"
     },
     {
       "repo": "fedora_rawhide",
       "version": "3.15.0~b3",
       "origversion": "3.15.0~b3-1.fc45",
       "status": "outdated",
-      "name": "python3.15"
+      "name": "python3.15",
+      "srcname": "python3.15",
+      "summary": "Version 3.15 of the Python interpreter",
+      "licenses": [
+        "Python-2.0.1"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/python3.15"
     }
   ],
   "opensuse": [
@@ -197,30 +341,58 @@
       "version": "3.11.10",
       "origversion": "3.11.10-150400.9.35.1",
       "status": "outdated",
-      "name": "python311"
+      "name": "python311",
+      "srcname": "python311",
+      "summary": "Python 3 Interpreter",
+      "licenses": [
+        "Python-2.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/python311"
     },
     {
       "repo": "opensuse_leap_15_6",
       "version": "3.12.12",
       "origversion": "3.12.12-150600.3.37.1",
       "status": "outdated",
-      "name": "python312"
+      "name": "python312",
+      "srcname": "python312",
+      "summary": "Python 3 Interpreter",
+      "licenses": [
+        "Python-2.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/python312"
     },
     {
       "repo": "opensuse_tumbleweed",
       "version": "3.15.0~b3",
       "origversion": "3.15.0~b3-1.2",
       "status": "outdated",
-      "name": "python315"
+      "name": "python315",
+      "srcname": "python315",
+      "summary": "Python 3 Interpreter",
+      "licenses": [
+        "Python-2.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/python315"
     }
   ],
   "gentoo": [
     {
       "repo": "gentoo",
-      "version": "3.15.9999",
+      "version": "3.15.0_beta4",
       "origversion": null,
-      "status": "rolling",
-      "name": "dev-lang/python"
+      "status": "devel",
+      "name": "dev-lang/python",
+      "srcname": "dev-lang/python",
+      "summary": "An interpreted, interactive, object-oriented programming language",
+      "licenses": [
+        "PSF-2"
+      ],
+      "vulnerable": true,
+      "project_link": "https://packages.gentoo.org/packages/dev-lang/python"
     }
   ],
   "mint": [
@@ -251,5 +423,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:42:57.709Z"
+  "generated_at": "2026-07-20T14:23:07.638Z"
 }

@@ -1,17 +1,32 @@
 {
   "query": "gimp",
+  "repology_project_url": "https://repology.org/project/gimp/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "extra",
         "pkgname": "gimp",
         "version": "3.2.4-2",
-        "url": "https://archlinux.org/packages/extra/x86_64/gimp/"
+        "page_url": "https://archlinux.org/packages/extra/x86_64/gimp/",
+        "homepage": "https://www.gimp.org/",
+        "description": "GNU Image Manipulation Program",
+        "licenses": [
+          "GPL-3.0-or-later"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
+  },
+  "windows": {
+    "id": "gimp",
+    "title": "GIMP",
+    "version": "3.2.4",
+    "description": "GIMP is a multi-platform photo manipulation tool. GIMP is an acronym for GNU Image Manipulation Program. The GIMP is suitable for a variety of image manipulation tasks, including photo retouching, image composition, and image construction.It can be used as a simple paint program, an expert quality photo retouching program, an online batch processing system, a mass production image renderer, an image format converter, etc.\n\nGIMP is expandable and extensible. It is designed to be augmented with plug-ins and extensions to do just about anything. The advanced scripting interface allows everything from the simplest task to the most complex image manipulation procedures to be easily scripted.\n\n## Features\n\n- High Quality Photo Manipulation: retouching, restoring to creative composites etc.\n- Original Artwork Creation: power and flexibility to transform images into unique creations.\n- Graphic Design Elements: gIMP is used for producing icons, graphical design elements, and art for user interface components and mockups.\n- Programming Algorithms: high quality framework for scripted image manipulation, with multi-language support such as C, C++, Perl, Python, Scheme, and more\n- Desktop Publishing Workflow: color management features to ensure high-fidelity color reproduction across digital and printed media.\n- [More features...](https://www.gimp.org/features)\n\n\n![screenshot](https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/master/automatic/gimp/screenshot.jpg)\n\n## Notes\n\n- **If the package is out of date please check [Version History](#versionhistory) for the latest submitted version. If you have a question, please ask it in [Chocolatey Community Package Discussions](https://github.com/chocolatey-community/chocolatey-packages/discussions) or raise an issue on the [Chocolatey Community Packages Repository](https://github.com/chocolatey-community/chocolatey-packages/issues) if you have problems with the package. Disqus comments will generally not be responded to.**",
+    "homepage": "https://www.gimp.org/",
+    "package_source_url": "https://github.com/chocolatey-community/chocolatey-packages/tree/master/automatic/gimp",
+    "page_url": "https://community.chocolatey.org/packages/gimp"
   },
   "reference_version": "3.2.4-2",
   "debian": [
@@ -20,35 +35,60 @@
       "version": "3.2.4",
       "origversion": "3.2.4-3",
       "status": "newest",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gimp"
     },
     {
       "repo": "debian_11",
       "version": "2.10.22",
       "origversion": "2.10.22-4+deb11u2",
       "status": "outdated",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gimp"
     },
     {
       "repo": "debian_12",
       "version": "2.10.34",
       "origversion": "2.10.34-1+deb12u10",
       "status": "outdated",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gimp"
     },
     {
       "repo": "debian_13",
       "version": "3.0.4",
       "origversion": "3.0.4-3+deb13u9",
       "status": "outdated",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gimp"
     },
     {
       "repo": "debian_14",
       "version": "3.2.4",
       "origversion": "3.2.4-3",
       "status": "newest",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/gimp"
     }
   ],
   "ubuntu": [
@@ -58,7 +98,12 @@
       "origversion": "3.2.2-1",
       "status": "outdated",
       "name": "gimp",
-      "lts": true
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_14_04",
@@ -66,7 +111,12 @@
       "origversion": "2.8.10-0ubuntu1.2",
       "status": "outdated",
       "name": "gimp",
-      "lts": true
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_16_04",
@@ -74,7 +124,12 @@
       "origversion": "2.8.16-1ubuntu1.1",
       "status": "outdated",
       "name": "gimp",
-      "lts": true
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_18_04",
@@ -82,7 +137,12 @@
       "origversion": "2.8.22-1",
       "status": "outdated",
       "name": "gimp",
-      "lts": true
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_20_04",
@@ -90,7 +150,12 @@
       "origversion": "2.10.18-1",
       "status": "outdated",
       "name": "gimp",
-      "lts": true
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_22_04",
@@ -98,7 +163,12 @@
       "origversion": "2.10.30-1ubuntu0.1",
       "status": "outdated",
       "name": "gimp",
-      "lts": true
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_24_04",
@@ -106,7 +176,12 @@
       "origversion": "2.10.36-3ubuntu0.24.04.1",
       "status": "outdated",
       "name": "gimp",
-      "lts": true
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_25_04",
@@ -114,7 +189,12 @@
       "origversion": "3.0.2-1",
       "status": "outdated",
       "name": "gimp",
-      "lts": false
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_25_10",
@@ -122,7 +202,12 @@
       "origversion": "3.0.4-6.1",
       "status": "outdated",
       "name": "gimp",
-      "lts": false
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     },
     {
       "repo": "ubuntu_26_10",
@@ -130,7 +215,12 @@
       "origversion": "3.2.4-3",
       "status": "newest",
       "name": "gimp",
-      "lts": false
+      "srcname": "gimp",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/gimp"
     }
   ],
   "fedora": [
@@ -139,49 +229,98 @@
       "version": "3.2.4",
       "origversion": "2:3.2.4-1.fc44",
       "status": "newest",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "LGPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC0-1.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gimp"
     },
     {
       "repo": "fedora_39",
       "version": "3.0.0~RC1",
       "origversion": "3.0.0~RC1-2.fc39",
       "status": "outdated",
-      "name": "gimp3"
+      "name": "gimp3",
+      "srcname": "gimp3",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "LGPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC0-1.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gimp3"
     },
     {
       "repo": "fedora_40",
       "version": "3.0.2",
       "origversion": "3.0.2-1.fc40",
       "status": "outdated",
-      "name": "gimp3"
+      "name": "gimp3",
+      "srcname": "gimp3",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "LGPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC0-1.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gimp3"
     },
     {
       "repo": "fedora_41",
       "version": "3.0.6",
       "origversion": "2:3.0.6-5.fc41",
       "status": "outdated",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "LGPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC0-1.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gimp"
     },
     {
       "repo": "fedora_42",
       "version": "3.2.4",
       "origversion": "2:3.2.4-1.fc42",
       "status": "newest",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "LGPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC0-1.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gimp"
     },
     {
       "repo": "fedora_43",
       "version": "3.2.4",
       "origversion": "2:3.2.4-1.fc43",
       "status": "newest",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "LGPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC0-1.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gimp"
     },
     {
       "repo": "fedora_rawhide",
       "version": "3.2.4",
       "origversion": "2:3.2.4-2.fc45",
       "status": "newest",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "LGPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC0-1.0"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/gimp"
     }
   ],
   "opensuse": [
@@ -190,30 +329,59 @@
       "version": "2.10.30",
       "origversion": "2.10.30-150400.3.35.1",
       "status": "outdated",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "The GNU Image Manipulation Program",
+      "licenses": [
+        "GPL-3.0-or-later"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/gimp"
     },
     {
       "repo": "opensuse_leap_15_5",
       "version": "2.10.30",
       "origversion": "2.10.30-150400.3.11.1",
       "status": "outdated",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "The GNU Image Manipulation Program",
+      "licenses": [
+        "GPL-3.0-or-later"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/gimp"
     },
     {
       "repo": "opensuse_tumbleweed",
       "version": "3.2.4",
       "origversion": "3.2.4-1.3",
       "status": "newest",
-      "name": "gimp"
+      "name": "gimp",
+      "srcname": "gimp",
+      "summary": "The GNU Image Manipulation Program",
+      "licenses": [
+        "GPL-3.0-or-later"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/gimp"
     }
   ],
   "gentoo": [
     {
       "repo": "gentoo",
-      "version": "9999",
+      "version": "3.2.4",
       "origversion": null,
-      "status": "rolling",
-      "name": "media-gfx/gimp"
+      "status": "newest",
+      "name": "media-gfx/gimp",
+      "srcname": "media-gfx/gimp",
+      "summary": "GNU Image Manipulation Program",
+      "licenses": [
+        "GPL-3+",
+        "LGPL-3+"
+      ],
+      "vulnerable": true,
+      "project_link": "https://packages.gentoo.org/packages/media-gfx/gimp"
     }
   ],
   "mint": [
@@ -244,5 +412,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:46:37.919Z"
+  "generated_at": "2026-07-20T14:19:33.808Z"
 }

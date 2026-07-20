@@ -1,18 +1,25 @@
 {
   "query": "code",
+  "repology_project_url": "https://repology.org/project/code/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "extra",
         "pkgname": "code",
         "version": "1.127.0-1",
-        "url": "https://archlinux.org/packages/extra/x86_64/code/"
+        "page_url": "https://archlinux.org/packages/extra/x86_64/code/",
+        "homepage": "https://github.com/microsoft/vscode",
+        "description": "The Open Source build of Visual Studio Code (vscode) editor",
+        "licenses": [
+          "MIT"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
   },
+  "windows": null,
   "reference_version": "1.127.0-1",
   "debian": [],
   "ubuntu": [],
@@ -47,5 +54,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:49:33.453Z"
+  "generated_at": "2026-07-20T14:17:35.704Z"
 }

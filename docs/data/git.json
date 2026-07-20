@@ -1,17 +1,32 @@
 {
   "query": "git",
+  "repology_project_url": "https://repology.org/project/git/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "extra",
         "pkgname": "git",
         "version": "2.55.0-1",
-        "url": "https://archlinux.org/packages/extra/x86_64/git/"
+        "page_url": "https://archlinux.org/packages/extra/x86_64/git/",
+        "homepage": "https://git-scm.com/",
+        "description": "the fast distributed version control system",
+        "licenses": [
+          "GPL-2.0-only"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
+  },
+  "windows": {
+    "id": "git",
+    "title": "Git",
+    "version": "2.55.0.3",
+    "description": "Git for Windows focuses on offering a lightweight, native set of tools that bring the full feature set of the Git SCM to Windows while providing appropriate user interfaces for experienced Git users and novices alike.\n\n## Features\n\n- **Git BASH**: Git for Windows provides a BASH emulation used to run Git from the command line. *NIX users should feel right at home, as the BASH emulation behaves just like the \"git\" command in LINUX and UNIX environments.\n- **Git GUI**: As Windows users commonly expect graphical user interfaces, Git for Windows also provides the Git GUI, a powerful alternative to Git BASH, offering a graphical version of just about every Git command line function, as well as comprehensive visual diff tools.\n- **Shell Integration**: Simply right-click on a folder in Windows Explorer to access the BASH or GUI.\n\n## Package parameters\n\nSee the [Git Package Parameters documentation page](https://github.com/chocolatey-community/chocolatey-packages/blob/master/automatic/git.install/ARGUMENTS.md).\n\nExample for passing in package parameters:\n`choco install git.install --params \"'/GitAndUnixToolsOnPath /WindowsTerminal /NoAutoCrlf'\"`\n\n## Notes\n\n- The package uses default install options minus desktop icons.\n- **If the package is out of date please check [Version History](#versionhistory) for the latest submitted version. If you have a question, please ask it in [Chocolatey Community Package Discussions](https://github.com/chocolatey-community/chocolatey-packages/discussions) or raise an issue on the [Chocolatey Community Packages Repository](https://github.com/chocolatey-community/chocolatey-packages/issues) if you have problems with the package. Disqus comments will generally not be responded to.**\n- Starting with version 2.49.0, installers for 32bit platforms are no longer available. If this is required, use an older version of the package.",
+    "homepage": "https://git-for-windows.github.io/",
+    "package_source_url": "https://github.com/chocolatey-community/chocolatey-packages/tree/master/automatic/git",
+    "page_url": "https://community.chocolatey.org/packages/git"
   },
   "reference_version": "2.55.0-1",
   "debian": [
@@ -20,42 +35,72 @@
       "version": "2.47.3",
       "origversion": "1:2.47.3-0+deb13u1",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/git"
     },
     {
       "repo": "debian_14",
       "version": "2.53.0",
       "origversion": "1:2.53.0-1",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/git"
     },
     {
       "repo": "debian_unstable",
       "version": "2.53.0",
       "origversion": "1:2.53.0-1",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/git"
     },
     {
       "repo": "debian_experimental",
       "version": "2.53.0+next.20260227",
       "origversion": "1:2.53.0+next.20260227-1",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/git"
     },
     {
       "repo": "debian_11",
       "version": "2.30.2",
       "origversion": "1:2.30.2-1+deb11u2",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/git"
     },
     {
       "repo": "debian_12",
       "version": "2.39.5",
       "origversion": "1:2.39.5-0+deb12u2",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "project_link": "https://tracker.debian.org/pkg/git"
     }
   ],
   "ubuntu": [
@@ -65,7 +110,12 @@
       "origversion": "1:2.51.0-1ubuntu1",
       "status": "outdated",
       "name": "git",
-      "lts": false
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_26_04",
@@ -73,7 +123,12 @@
       "origversion": "1:2.53.0-1ubuntu1",
       "status": "outdated",
       "name": "git",
-      "lts": true
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_26_10",
@@ -81,7 +136,12 @@
       "origversion": "1:2.53.0-1ubuntu1",
       "status": "outdated",
       "name": "git",
-      "lts": false
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_14_04",
@@ -89,7 +149,12 @@
       "origversion": "1:1.9.1-1ubuntu0.10",
       "status": "outdated",
       "name": "git",
-      "lts": true
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_16_04",
@@ -97,7 +162,12 @@
       "origversion": "1:2.7.4-0ubuntu1",
       "status": "outdated",
       "name": "git",
-      "lts": true
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_18_04",
@@ -105,7 +175,12 @@
       "origversion": "1:2.17.1-1ubuntu0.18",
       "status": "outdated",
       "name": "git",
-      "lts": true
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_20_04",
@@ -113,7 +188,12 @@
       "origversion": "1:2.25.1-1ubuntu3.14",
       "status": "outdated",
       "name": "git",
-      "lts": true
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_22_04",
@@ -121,7 +201,12 @@
       "origversion": "1:2.34.1-1ubuntu1",
       "status": "outdated",
       "name": "git",
-      "lts": true
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_24_04",
@@ -129,7 +214,12 @@
       "origversion": "1:2.43.0-1ubuntu7",
       "status": "outdated",
       "name": "git",
-      "lts": true
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     },
     {
       "repo": "ubuntu_25_04",
@@ -137,7 +227,12 @@
       "origversion": "1:2.48.1-0ubuntu1.1",
       "status": "outdated",
       "name": "git",
-      "lts": false
+      "srcname": "git",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": true,
+      "lts": false,
+      "project_link": "https://launchpad.net/ubuntu/+source/git"
     }
   ],
   "fedora": [
@@ -146,49 +241,98 @@
       "version": "2.52.0",
       "origversion": "2.52.0-1.fc41",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast Version Control System",
+      "licenses": [
+        "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/git"
     },
     {
       "repo": "fedora_42",
       "version": "2.54.0",
       "origversion": "2.54.0-1.fc42",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast Version Control System",
+      "licenses": [
+        "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/git"
     },
     {
       "repo": "fedora_43",
       "version": "2.55.0",
       "origversion": "2.55.0-1.fc43",
       "status": "newest",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast Version Control System",
+      "licenses": [
+        "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/git"
     },
     {
       "repo": "fedora_44",
       "version": "2.55.0",
       "origversion": "2.55.0-1.fc44",
       "status": "newest",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast Version Control System",
+      "licenses": [
+        "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/git"
     },
     {
       "repo": "fedora_rawhide",
       "version": "2.55.0",
       "origversion": "2.55.0-1.fc45",
       "status": "newest",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast Version Control System",
+      "licenses": [
+        "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT"
+      ],
+      "vulnerable": false,
+      "project_link": "https://src.fedoraproject.org/rpms/git"
     },
     {
       "repo": "fedora_39",
       "version": "2.47.0",
       "origversion": "2.47.0-1.fc39",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast Version Control System",
+      "licenses": [
+        "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/git"
     },
     {
       "repo": "fedora_40",
       "version": "2.49.0",
       "origversion": "2.49.0-1.fc40",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast Version Control System",
+      "licenses": [
+        "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT"
+      ],
+      "vulnerable": true,
+      "project_link": "https://src.fedoraproject.org/rpms/git"
     }
   ],
   "opensuse": [
@@ -197,30 +341,58 @@
       "version": "2.51.0",
       "origversion": "2.51.0-150600.3.12.1",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast, scalable, distributed revision control system",
+      "licenses": [
+        "GPL-2.0-only"
+      ],
+      "vulnerable": false,
+      "project_link": "https://software.opensuse.org/package/git"
     },
     {
       "repo": "opensuse_tumbleweed",
       "version": "2.55.0",
       "origversion": "2.55.0-1.1",
       "status": "newest",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast, scalable, distributed revision control system",
+      "licenses": [
+        "GPL-2.0-only"
+      ],
+      "vulnerable": false,
+      "project_link": "https://software.opensuse.org/package/git"
     },
     {
       "repo": "opensuse_leap_15_5",
       "version": "2.35.3",
       "origversion": "2.35.3-150300.10.30.1",
       "status": "outdated",
-      "name": "git"
+      "name": "git",
+      "srcname": "git",
+      "summary": "Fast, scalable, distributed revision control system",
+      "licenses": [
+        "GPL-2.0-only"
+      ],
+      "vulnerable": true,
+      "project_link": "https://software.opensuse.org/package/git"
     }
   ],
   "gentoo": [
     {
       "repo": "gentoo",
-      "version": "9999",
-      "origversion": "9999-r2",
-      "status": "rolling",
-      "name": "dev-vcs/git"
+      "version": "2.55.0",
+      "origversion": null,
+      "status": "newest",
+      "name": "dev-vcs/git",
+      "srcname": "dev-vcs/git",
+      "summary": "Stupid content tracker: distributed VCS designed for speed and efficiency",
+      "licenses": [
+        "GPL-2"
+      ],
+      "vulnerable": false,
+      "project_link": "https://packages.gentoo.org/packages/dev-vcs/git"
     }
   ],
   "mint": [
@@ -251,5 +423,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:43:48.272Z"
+  "generated_at": "2026-07-20T14:19:56.517Z"
 }

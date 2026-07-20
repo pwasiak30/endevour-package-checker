@@ -95,7 +95,9 @@
   <p class="subtitle">
     Wpisz nazwę pakietu, aby sprawdzić jego najnowszą wersję w repozytoriach, z których
     korzysta EndeavourOS (Arch: core/extra/multilib + AUR), a następnie porównać
-    z Debian, Ubuntu (wszystkie wydania, w tym LTS), Fedora, openSUSE, Gentoo i Linux Mint.
+    z Debian, Ubuntu (wszystkie wydania, w tym LTS), Fedora, openSUSE, Gentoo, Linux Mint
+    i — jeśli dostępny — Windows (Chocolatey). Przy każdej wersji: link do strony projektu/pakietu
+    i dodatkowe informacje (opis, licencja, znane podatności).
   </p>
   <form id="searchForm">
     <input type="text" id="pkgInput" list="pkgList" placeholder="np. firefox, python, vim, neovim..." autocomplete="off" autocapitalize="off" spellcheck="false" />
@@ -113,7 +115,8 @@
   <footer>
     Źródła danych: <a href="https://archlinux.org/packages/" target="_blank" rel="noopener">Arch Linux Packages</a>,
     <a href="https://aur.archlinux.org/" target="_blank" rel="noopener">AUR</a>,
-    <a href="https://repology.org/" target="_blank" rel="noopener">Repology.org</a> (Debian, Ubuntu, Fedora, openSUSE, Gentoo).
+    <a href="https://repology.org/" target="_blank" rel="noopener">Repology.org</a> (Debian, Ubuntu, Fedora, openSUSE, Gentoo),
+    <a href="https://community.chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a> (Windows, best-effort po dopasowaniu ID).
     Wersja dla Linux Mint to estymacja z bazowego wydania Ubuntu (Repology nie śledzi Mint osobno).
     Dane odświeża codziennie <a href="https://github.com/pwasiak30/endevour-package-checker/actions/workflows/update-data.yml" target="_blank" rel="noopener">GitHub Actions</a> —
     tam też można ręcznie doraźnie dodać/odświeżyć konkretny pakiet (przycisk „Run workflow”, pole „package”).
@@ -175,6 +178,16 @@ function esc(s) {
   }[c]));
 }
 
+function truncate(s, n) {
+  if (!s) return '';
+  return s.length > n ? s.slice(0, n).trim() + '…' : s;
+}
+
+function linkIcon(url, label) {
+  if (!url) return '';
+  return ` <a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(label || 'Link')}">🔗</a>`;
+}
+
 function renderDistroTable(title, rows, referenceVersion, opts) {
   opts = opts || {};
   if (!rows || rows.length === 0) {
@@ -184,12 +197,20 @@ function renderDistroTable(title, rows, referenceVersion, opts) {
   const trs = sorted.map((r) => {
     const label = opts.labelFn ? opts.labelFn(r) : (r.repo || r.release);
     const lts = r.lts ? '<span class="lts">LTS</span>' : '';
-    const estimated = r.estimated ? `<div class="estimated">${esc(r.source || 'estymacja')}</div>` : '';
+    const isLive = r.status === 'rolling' || r.version === '9999';
+    const cve = r.vulnerable ? ' <span class="badge older" title="Repology oznaczylo ta wersje jako podatna (CVE)">⚠️ CVE</span>' : '';
+    const notes = [];
+    if (r.estimated) notes.push(esc(r.source || 'estymacja'));
+    if (isLive) notes.push('live ebuild (ciągnie z git HEAD, nie ma stałej wersji)');
+    if (r.licenses && r.licenses.length) notes.push('licencja: ' + esc(r.licenses.join(', ')));
+    if (r.summary) notes.push(esc(truncate(r.summary, 140)));
+    const notesHtml = notes.length ? `<div class="estimated">${notes.join(' · ')}</div>` : '';
     const ver = r.version || '—';
+    const badge = isLive ? '<span class="badge unknown">live</span>' : badgeFor(r.version, referenceVersion);
     return `<tr>
       <td>${esc(label)}${lts}</td>
-      <td class="ver">${esc(ver)}${estimated}</td>
-      <td>${badgeFor(r.version, referenceVersion)}</td>
+      <td class="ver">${esc(ver)}${linkIcon(r.project_link, 'Strona projektu w tej dystrybucji')}${cve}${notesHtml}</td>
+      <td>${badge}</td>
     </tr>`;
   }).join('');
   return `<div class="card">
@@ -282,16 +303,21 @@ function render(data) {
   if (archRows.length === 0 && !eos.aur) {
     html += '<div class="empty">Pakiet nieznaleziony w repozytoriach core/extra/multilib ani AUR.</div>';
   } else {
+    const homepage = (archRows[0] && archRows[0].homepage) || (eos.aur && eos.aur.homepage);
+    const description = (archRows[0] && archRows[0].description) || (eos.aur && eos.aur.description);
+    if (description) html += `<div class="note" style="margin-bottom:10px;">${esc(description)}</div>`;
+    if (homepage) html += `<div class="note" style="margin-bottom:10px;">${linkIcon(homepage, 'Strona domowa projektu')} <a href="${esc(homepage)}" target="_blank" rel="noopener">${esc(homepage)}</a></div>`;
     html += '<table><thead><tr><th>Repozytorium</th><th>Wersja</th><th></th></tr></thead><tbody>';
     for (const r of archRows) {
-      html += `<tr><td>${esc(r.repo)}</td><td class="ver">${esc(r.version)}</td><td>${r.version === referenceVersion ? '<span class="badge newest">najnowsza</span>' : ''}</td></tr>`;
+      html += `<tr><td>${esc(r.repo)}</td><td class="ver">${esc(r.version)}${linkIcon(r.page_url, 'Strona pakietu na archlinux.org')}</td><td>${r.version === referenceVersion ? '<span class="badge newest">najnowsza</span>' : ''}</td></tr>`;
     }
     if (eos.aur) {
-      html += `<tr><td>AUR</td><td class="ver">${esc(eos.aur.version)}</td><td></td></tr>`;
+      html += `<tr><td>AUR</td><td class="ver">${esc(eos.aur.version)}${linkIcon(eos.aur.page_url, 'Strona pakietu w AUR')}</td><td></td></tr>`;
     }
     html += '</tbody></table>';
   }
   if (eos.arch_error) html += `<div class="note">Uwaga (core/extra/multilib): ${esc(eos.arch_error)}</div>`;
+  html += `<div class="note" style="margin-top:10px;">${linkIcon(data.repology_project_url, 'Wszystkie wersje wg Repology.org')} <a href="${esc(data.repology_project_url)}" target="_blank" rel="noopener">Zobacz na Repology.org →</a></div>`;
   html += '</div>';
 
   if (!data.repology_ok) {
@@ -316,6 +342,27 @@ function render(data) {
   html += renderDistroTable('🍃 Linux Mint (best-effort)', data.mint, referenceVersion, {
     labelFn: (r) => r.release,
   });
+
+  // --- Windows (Chocolatey) ---
+  const win = data.windows;
+  html += '<div class="card"><h2>🪟 Windows (Chocolatey)</h2>';
+  if (!win) {
+    html += '<div class="empty">Brak dopasowania w Chocolatey (community.chocolatey.org) — pakiet może po prostu nie mieć tam odpowiednika, albo ID się różni od nazwy linuksowej.</div>';
+  } else {
+    if (win.description) html += `<div class="note" style="margin-bottom:10px;">${esc(truncate(win.description, 220))}</div>`;
+    html += '<table><thead><tr><th>Źródło</th><th>Wersja</th><th>Status</th></tr></thead><tbody>';
+    html += `<tr>
+      <td>Chocolatey — ${esc(win.title)}${linkIcon(win.page_url, 'Strona pakietu na Chocolatey')}</td>
+      <td class="ver">${esc(win.version)}</td>
+      <td>${badgeFor(win.version, referenceVersion)}</td>
+    </tr>`;
+    html += '</tbody></table>';
+    const links = [];
+    if (win.homepage) links.push(`<a href="${esc(win.homepage)}" target="_blank" rel="noopener">Strona domowa</a>`);
+    if (win.package_source_url) links.push(`<a href="${esc(win.package_source_url)}" target="_blank" rel="noopener">Źródło paczki (GitHub)</a>`);
+    if (links.length) html += `<div class="note" style="margin-top:10px;">${links.join(' · ')}</div>`;
+  }
+  html += '</div>';
 
   OUTPUT.innerHTML = html;
 }

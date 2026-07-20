@@ -1,18 +1,57 @@
 {
   "query": "linux-lts",
+  "repology_project_url": "https://repology.org/project/linux-lts/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "core",
         "pkgname": "linux-lts",
         "version": "6.18.39-1",
-        "url": "https://archlinux.org/packages/core/x86_64/linux-lts/"
+        "page_url": "https://archlinux.org/packages/core/x86_64/linux-lts/",
+        "homepage": "https://www.kernel.org",
+        "description": "The LTS Linux kernel and modules",
+        "licenses": [
+          "Apache-2.0 OR MIT",
+          "BSD-2-Clause OR GPL-2.0-or-later",
+          "BSD-3-Clause",
+          "BSD-3-Clause OR GPL-2.0-only",
+          "BSD-3-Clause OR GPL-2.0-or-later",
+          "BSD-3-Clause-Clear",
+          "GPL-1.0-or-later",
+          "GPL-1.0-or-later OR BSD-3-Clause",
+          "GPL-2.0-only",
+          "GPL-2.0-only OR Apache-2.0",
+          "GPL-2.0-only OR BSD-2-Clause",
+          "GPL-2.0-only OR BSD-3-Clause",
+          "GPL-2.0-only OR CDDL-1.0",
+          "GPL-2.0-only OR Linux-OpenIB",
+          "GPL-2.0-only OR MIT",
+          "GPL-2.0-only OR MPL-1.1",
+          "GPL-2.0-only OR X11",
+          "GPL-2.0-only WITH Linux-syscall-note",
+          "GPL-2.0-or-later",
+          "GPL-2.0-or-later OR BSD-2-Clause",
+          "GPL-2.0-or-later OR BSD-3-Clause",
+          "GPL-2.0-or-later OR MIT",
+          "GPL-2.0-or-later OR X11",
+          "GPL-2.0-or-later WITH GCC-exception-2.0",
+          "ISC",
+          "LGPL-2.0-or-later",
+          "LGPL-2.1-only",
+          "LGPL-2.1-only OR BSD-2-Clause",
+          "LGPL-2.1-or-later",
+          "MIT",
+          "MPL-1.1",
+          "X11",
+          "Zlib"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
   },
+  "windows": null,
   "reference_version": "6.18.39-1",
   "debian": [],
   "ubuntu": [],
@@ -47,5 +86,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:48:20.159Z"
+  "generated_at": "2026-07-20T14:21:28.567Z"
 }

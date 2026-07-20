@@ -1,17 +1,32 @@
 {
   "query": "steam",
+  "repology_project_url": "https://repology.org/project/steam/versions",
   "endeavouros": {
     "arch_repos": [
       {
         "repo": "multilib",
         "pkgname": "steam",
         "version": "1.0.0.87-1",
-        "url": "https://archlinux.org/packages/multilib/x86_64/steam/"
+        "page_url": "https://archlinux.org/packages/multilib/x86_64/steam/",
+        "homepage": "https://steampowered.com/",
+        "description": "Valve's digital software delivery system",
+        "licenses": [
+          "LicenseRef-steam-subscriber-agreement"
+        ]
       }
     ],
     "arch_error": null,
     "aur": null,
     "aur_error": null
+  },
+  "windows": {
+    "id": "steam",
+    "title": "Steam",
+    "version": "3.10.91.91241028",
+    "description": "Steam is a video game digital distribution service and storefront by Valve.\n\n**NOTE**: This package is automatically updated. If it is out of date and there is no newer package submitted, please use the `Contact Maintainers` functionality to alert them.",
+    "homepage": "https://store.steampowered.com/",
+    "package_source_url": "https://github.com/mikeee/ChocoPackages/tree/master/automatic/steam",
+    "page_url": "https://community.chocolatey.org/packages/steam"
   },
   "reference_version": "1.0.0.87-1",
   "debian": [
@@ -20,7 +35,12 @@
       "version": "1.0.0.68",
       "origversion": "1.0.0.68-1",
       "status": "outdated",
-      "name": "steam"
+      "name": "steam",
+      "srcname": "steam",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "project_link": "https://tracker.debian.org/pkg/steam"
     }
   ],
   "ubuntu": [
@@ -30,7 +50,12 @@
       "origversion": "1:1.0.0.45-1ubuntu1.2",
       "status": "outdated",
       "name": "steam",
-      "lts": true
+      "srcname": "steam",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/steam"
     },
     {
       "repo": "ubuntu_16_04",
@@ -38,7 +63,12 @@
       "origversion": "1:1.0.0.48-1ubuntu4",
       "status": "outdated",
       "name": "steam",
-      "lts": true
+      "srcname": "steam",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/steam"
     },
     {
       "repo": "ubuntu_18_04",
@@ -46,7 +76,12 @@
       "origversion": "1:1.0.0.54+repack-5ubuntu1",
       "status": "outdated",
       "name": "steam",
-      "lts": true
+      "srcname": "steam",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/steam"
     },
     {
       "repo": "ubuntu_20_04",
@@ -54,7 +89,12 @@
       "origversion": "1:1.0.0.61-2ubuntu3",
       "status": "outdated",
       "name": "steam",
-      "lts": true
+      "srcname": "steam",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/steam"
     },
     {
       "repo": "ubuntu_22_04",
@@ -62,7 +102,12 @@
       "origversion": "1:1.0.0.74-1ubuntu2",
       "status": "outdated",
       "name": "steam",
-      "lts": true
+      "srcname": "steam",
+      "summary": null,
+      "licenses": [],
+      "vulnerable": false,
+      "lts": true,
+      "project_link": "https://launchpad.net/ubuntu/+source/steam"
     }
   ],
   "fedora": [],
@@ -72,21 +117,42 @@
       "version": "1.0.0.78",
       "origversion": "1.0.0.78-lp155.1.1",
       "status": "outdated",
-      "name": "steam"
+      "name": "steam",
+      "srcname": "steam",
+      "summary": "Installer for Valve's digital software distribution service",
+      "licenses": [
+        "SUSE-Freeware"
+      ],
+      "vulnerable": false,
+      "project_link": "https://software.opensuse.org/package/steam"
     },
     {
       "repo": "opensuse_leap_15_6",
       "version": "1.0.0.79",
       "origversion": "1.0.0.79-lp156.1.1",
       "status": "outdated",
-      "name": "steam"
+      "name": "steam",
+      "srcname": "steam",
+      "summary": "Installer for Valve's digital software distribution service",
+      "licenses": [
+        "SUSE-Freeware"
+      ],
+      "vulnerable": false,
+      "project_link": "https://software.opensuse.org/package/steam"
     },
     {
       "repo": "opensuse_tumbleweed",
       "version": "1.0.0.85",
       "origversion": "1.0.0.85-3.3",
       "status": "outdated",
-      "name": "steam"
+      "name": "steam",
+      "srcname": "steam",
+      "summary": "Installer for Valve's digital software distribution service",
+      "licenses": [
+        "SUSE-Freeware"
+      ],
+      "vulnerable": false,
+      "project_link": "https://software.opensuse.org/package/steam"
     }
   ],
   "gentoo": [],
@@ -118,5 +184,5 @@
   ],
   "repology_ok": true,
   "repology_error": null,
-  "generated_at": "2026-07-20T13:48:45.741Z"
+  "generated_at": "2026-07-20T14:23:54.202Z"
 }
