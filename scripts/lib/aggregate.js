@@ -353,4 +353,15 @@ async function aggregatePackage(name) {
   };
 }
 
-module.exports = { aggregatePackage, compareVersions, bucketRepology, getArchPackages, getAurPackage, getRepologyData, getWindowsPackage };
+module.exports = {
+  aggregatePackage,
+  compareVersions,
+  bucketRepology,
+  getArchPackages,
+  getAurPackage,
+  getRepologyData,
+  getWindowsPackage,
+  getMintData,
+  MINT_RELEASES,
+  UBUNTU_LTS,
+};
