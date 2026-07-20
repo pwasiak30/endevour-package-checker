@@ -7,7 +7,7 @@ samego pakietu w: **Debian**, **Ubuntu** (wszystkie wydania, w tym LTS), **Fedor
 
 ## Jak to działa
 
-Frontend (`public/index.html`) to statyczna strona, która woła funkcję serverless
+Frontend (`docs/index.html`) to statyczna strona, która woła funkcję serverless
 `netlify/functions/search.js`. Funkcja ta w jednym zapytaniu agreguje dane z kilku
 źródeł:
 
@@ -51,5 +51,5 @@ Otworzy się strona na `http://localhost:8888`, funkcja dostępna pod
 ## Wdrożenie
 
 Repozytorium jest podłączone do Netlify (auto-deploy przy każdym pushu na `main`).
-Konfiguracja w `netlify.toml`: katalog publikowany to `public/`, funkcje w
+Konfiguracja w `netlify.toml`: katalog publikowany to `docs/`, funkcje w
 `netlify/functions/`.
