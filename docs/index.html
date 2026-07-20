@@ -195,11 +195,19 @@ function renderDistroTable(title, rows, referenceVersion, opts) {
   </div>`;
 }
 
+// Strona jest hostowana statycznie na GitHub Pages (nie umie uruchamiac funkcji
+// serverless), wiec zapytanie o dane idzie do backendu na Netlify (tam mieszka
+// funkcja netlify/functions/search.js z tego samego repo). Gdy strona jest
+// akurat serwowana z samego Netlify, ten sam adres tez dziala (to ta sama funkcja).
+const API_BASE = location.hostname.endsWith('netlify.app')
+  ? ''
+  : 'https://endevour-package-checker.netlify.app';
+
 async function doSearch(pkg) {
   OUTPUT.innerHTML = '<div class="status">Szukam „' + esc(pkg) + '”…</div>';
   BTN.disabled = true;
   try {
-    const res = await fetch('/.netlify/functions/search?q=' + encodeURIComponent(pkg));
+    const res = await fetch(API_BASE + '/.netlify/functions/search?q=' + encodeURIComponent(pkg));
     const data = await res.json();
     if (!res.ok) {
       OUTPUT.innerHTML = `<div class="error-box">${esc(data.error || 'Blad zapytania')}</div>`;
@@ -207,7 +215,10 @@ async function doSearch(pkg) {
     }
     render(data);
   } catch (e) {
-    OUTPUT.innerHTML = `<div class="error-box">Blad polaczenia: ${esc(e.message)}</div>`;
+    const hint = e instanceof SyntaxError
+      ? ' (backend na Netlify wyglada na niepodlaczony/niewdrozony — zobacz README)'
+      : '';
+    OUTPUT.innerHTML = `<div class="error-box">Blad polaczenia: ${esc(e.message)}${hint}</div>`;
   } finally {
     BTN.disabled = false;
   }
