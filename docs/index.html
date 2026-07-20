@@ -199,6 +199,9 @@
     padding: 2px 6px; border: 2px solid var(--border); border-radius: 4px; margin-left: 6px;
   }
   .estimated { color: var(--text-dim); font-style: italic; font-size: 0.95rem; }
+  .suggestion {
+    padding: 8px 14px; font-size: 0.65rem; background: var(--diamond); color: #05303d;
+  }
   .empty { color: var(--text-dim); font-style: italic; font-size: 1.1rem; }
   footer {
     margin-top: 40px; color: var(--text-dim); font-size: 0.95rem; line-height: 1.7;
@@ -342,28 +345,63 @@ function renderDistroTable(title, rows, referenceVersion, opts) {
   if (!rows || rows.length === 0) {
     return `<div class="card"><h2>${title}</h2><div class="empty">Brak danych / pakiet nieznaleziony.</div></div>`;
   }
-  const sorted = [...rows].sort((a, b) => (a.repo || a.release || '').localeCompare(b.repo || b.release || ''));
-  const trs = sorted.map((r) => {
-    const label = opts.labelFn ? opts.labelFn(r) : (r.repo || r.release);
-    const lts = r.lts ? '<span class="lts">LTS</span>' : '';
-    const isLive = r.status === 'rolling' || r.version === '9999';
-    const cve = r.vulnerable ? ' <span class="badge older" title="Repology oznaczylo ta wersje jako podatna (CVE)">⚠️ CVE</span>' : '';
+
+  // Opis/licencja pokazujemy RAZ w naglowku karty, a nie w kazdym wierszu -
+  // dla dystrybucji z wieloma sledzonymi wydaniami (np. Fedora: 7+ wersji)
+  // powtarzanie tego samego tekstu przy kazdym wierszu robilo z tabeli
+  // nieczytelna scianke tekstu.
+  const infoSource = rows.find((r) => (r.licenses && r.licenses.length) || r.summary);
+  let headerInfo = '';
+  if (infoSource) {
+    const parts = [];
+    if (infoSource.summary) parts.push(esc(truncate(infoSource.summary, 160)));
+    if (infoSource.licenses && infoSource.licenses.length) parts.push('licencja: ' + esc(infoSource.licenses.join(', ')));
+    if (parts.length) headerInfo = `<div class="note" style="margin-bottom:10px;">${parts.join(' · ')}</div>`;
+  }
+
+  // Grupuj wydania o identycznej wersji w jeden wiersz - wiele dystrybucji
+  // (zwlaszcza Fedora: 40/41/42/43/Rawhide) ma zwykle te sama wersje pakietu
+  // na kilku wydaniach naraz, wiec bez grupowania tabela byla dluga i
+  // nieczytelna.
+  const groups = new Map();
+  for (const r of rows) {
+    const key = r.version || ' ';
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(r);
+  }
+  const sortedGroups = [...groups.values()].sort((a, b) => compareVersions(b[0].version, a[0].version));
+
+  const MAX_LABELS = 4;
+  const trs = sortedGroups.map((group) => {
+    const sortedRows = [...group].sort((a, b) => (a.repo || a.release || '').localeCompare(b.repo || b.release || ''));
+    const labels = sortedRows.map((r) => opts.labelFn ? opts.labelFn(r) : (r.repo || r.release));
+    const labelText = labels.length > MAX_LABELS
+      ? labels.slice(0, MAX_LABELS).join(', ') + ` +${labels.length - MAX_LABELS} innych`
+      : labels.join(', ');
+    const anyLts = sortedRows.some((r) => r.lts);
+    const anyLive = sortedRows.some((r) => r.status === 'rolling' || r.version === '9999');
+    const anyVuln = sortedRows.some((r) => r.vulnerable);
+    const estimatedRow = sortedRows.find((r) => r.estimated);
+    const linkRow = sortedRows.find((r) => r.project_link) || sortedRows[0];
+
+    const lts = anyLts ? '<span class="lts">LTS</span>' : '';
+    const cve = anyVuln ? ' <span class="badge older" title="Repology oznaczylo ta wersje jako podatna (CVE)">⚠️ CVE</span>' : '';
     const notes = [];
-    if (r.estimated) notes.push(esc(r.source || 'estymacja'));
-    if (isLive) notes.push('live ebuild (ciągnie z git HEAD, nie ma stałej wersji)');
-    if (r.licenses && r.licenses.length) notes.push('licencja: ' + esc(r.licenses.join(', ')));
-    if (r.summary) notes.push(esc(truncate(r.summary, 140)));
+    if (estimatedRow) notes.push(esc(estimatedRow.source || 'estymacja'));
+    if (anyLive) notes.push('live ebuild (ciągnie z git HEAD, nie ma stałej wersji)');
     const notesHtml = notes.length ? `<div class="estimated">${notes.join(' · ')}</div>` : '';
-    const ver = r.version || '—';
-    const badge = isLive ? '<span class="badge unknown">live</span>' : badgeFor(r.version, referenceVersion);
+    const ver = sortedRows[0].version || '—';
+    const badge = anyLive ? '<span class="badge unknown">live</span>' : badgeFor(ver, referenceVersion);
     return `<tr>
-      <td>${esc(label)}${lts}</td>
-      <td class="ver">${esc(ver)}${linkIcon(r.project_link, 'Strona projektu w tej dystrybucji')}${cve}${notesHtml}</td>
+      <td>${esc(labelText)}${lts}</td>
+      <td class="ver">${esc(ver)}${linkIcon(linkRow.project_link, 'Strona projektu w tej dystrybucji')}${cve}${notesHtml}</td>
       <td>${badge}</td>
     </tr>`;
   }).join('');
+
   return `<div class="card">
     <h2>${title}</h2>
+    ${headerInfo}
     <table>
       <thead><tr><th>Wydanie</th><th>Wersja</th><th>Status</th></tr></thead>
       <tbody>${trs}</tbody>
@@ -379,7 +417,14 @@ function renderDistroTable(title, rows, referenceVersion, opts) {
 const HINT_EL = document.getElementById('hintText');
 let PKG_INDEX = { packages: [], details: {}, last_build: null };
 
-async function loadIndex() {
+// Normalizuje nazwe pakietu do porownan "rozmytych": male litery, bez spacji,
+// myslnikow, kropek i podkreslen - zeby "libre office" / "Libre-Office" /
+// "libre_office" trafialy na "libreoffice-fresh".
+function normalizeName(s) {
+  return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+const indexReady = (async function loadIndex() {
   try {
     const res = await fetch('data/index.json', { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -393,14 +438,61 @@ async function loadIndex() {
   } catch (e) {
     HINT_EL.textContent = 'Nie udało się wczytać indeksu pakietów (' + e.message + ').';
   }
+})();
+
+// Probuje dopasowac wpisana nazwe do faktycznej nazwy w bazie: najpierw
+// dokladnie (bez wzgledu na wielkosc liter), potem po normalizacji
+// (ignorujac spacje/myslniki/podkreslenia), a na koncu jako dopasowanie
+// czesciowe (np. "libre office" -> "libreoffice-fresh").
+function resolvePackageName(pkg) {
+  const packages = PKG_INDEX.packages || [];
+  if (!packages.length) return { name: pkg, matched: 'exact' };
+  const exact = packages.find((p) => p === pkg);
+  if (exact) return { name: exact, matched: 'exact' };
+  const caseInsensitive = packages.find((p) => p.toLowerCase() === pkg.toLowerCase());
+  if (caseInsensitive) return { name: caseInsensitive, matched: 'case' };
+  const norm = normalizeName(pkg);
+  if (!norm) return { name: pkg, matched: 'exact' };
+  const normExact = packages.find((p) => normalizeName(p) === norm);
+  if (normExact) return { name: normExact, matched: 'normalized' };
+  const candidates = packages.filter((p) => {
+    const pn = normalizeName(p);
+    return pn.includes(norm) || norm.includes(pn);
+  });
+  if (candidates.length === 1) return { name: candidates[0], matched: 'fuzzy' };
+  if (candidates.length > 1) return { name: null, matched: 'ambiguous', candidates };
+  return { name: pkg, matched: 'none' };
 }
-loadIndex();
+
+function pickSuggestion(name) {
+  INPUT.value = name;
+  const params = new URLSearchParams(location.search);
+  params.set('q', name);
+  history.replaceState(null, '', '?' + params.toString());
+  doSearch(name);
+}
+window.pickSuggestion = pickSuggestion;
 
 async function doSearch(pkg) {
   OUTPUT.innerHTML = '<div class="status">Szukam „' + esc(pkg) + '”…</div>';
   BTN.disabled = true;
   try {
-    const res = await fetch('data/' + encodeURIComponent(pkg) + '.json', { cache: 'no-store' });
+    await indexReady;
+    const resolved = resolvePackageName(pkg);
+
+    if (resolved.matched === 'ambiguous') {
+      const items = resolved.candidates.slice(0, 20).map((c) =>
+        `<button type="button" class="suggestion" onclick="pickSuggestion('${c.replace(/'/g, "\\'")}')">${esc(c)}</button>`
+      ).join(' ');
+      OUTPUT.innerHTML = `<div class="error-box">
+        Zapytanie „${esc(pkg)}” pasuje do kilku pakietów w bazie — wybierz jeden:
+        <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;">${items}</div>
+      </div>`;
+      return;
+    }
+
+    const finalName = resolved.name || pkg;
+    const res = await fetch('data/' + encodeURIComponent(finalName) + '.json', { cache: 'no-store' });
     if (res.status === 404) {
       const runUrl = 'https://github.com/pwasiak30/endevour-package-checker/actions/workflows/update-data.yml';
       OUTPUT.innerHTML = `<div class="error-box">
@@ -412,7 +504,12 @@ async function doSearch(pkg) {
     }
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    render(data);
+    if (resolved.matched !== 'exact') {
+      OUTPUT.innerHTML = `<div class="note" style="margin-bottom:12px;">Pokazuję wyniki dla <b>${esc(finalName)}</b> (dopasowane do „${esc(pkg)}”).</div>`;
+    } else {
+      OUTPUT.innerHTML = '';
+    }
+    render(data, resolved.matched !== 'exact');
   } catch (e) {
     OUTPUT.innerHTML = `<div class="error-box">Błąd wczytywania danych: ${esc(e.message)}</div>`;
   } finally {
@@ -420,7 +517,7 @@ async function doSearch(pkg) {
   }
 }
 
-function render(data) {
+function render(data, appendToExisting) {
   const eos = data.endeavouros || {};
   const archRows = eos.arch_repos || [];
   // referencyjna wersja = najnowsza wsrod core/extra/multilib (Arch jest rolling, wiec to zazwyczaj najbardziej aktualna)
@@ -513,7 +610,11 @@ function render(data) {
   }
   html += '</div>';
 
-  OUTPUT.innerHTML = html;
+  if (appendToExisting) {
+    OUTPUT.innerHTML += html;
+  } else {
+    OUTPUT.innerHTML = html;
+  }
 }
 
 FORM.addEventListener('submit', (e) => {
