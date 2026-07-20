@@ -266,6 +266,17 @@ function render(data) {
     html += `<div class="note" style="margin-bottom:12px;">Dane dla „${esc(data.query || '')}” wygenerowane: ${esc(when)}</div>`;
   }
 
+  if (/^linux(-lts|-zen|-hardened|-rt)?$/i.test(data.query || '')) {
+    html += `<div class="error-box" style="border-color:#5a4a1a;background:#2a2410;color:var(--yellow);">
+      ⚠️ Pakiety jądra są zwodnicze w porównaniach między dystrybucjami. Dla Ubuntu/Mint pokazana
+      wersja to pakiet <code>linux</code> (oryginalne jądro „GA” z premiery danego wydania) —
+      Ubuntu ma osobny, rolujący tor <b>HWE</b> (<code>linux-hwe-24.04</code> itp.), który
+      domyślnie instalują obrazy pulpitowe Ubuntu i Linux Mint, i który bywa znacznie nowszy
+      (Repology nie śledzi go jako tego samego projektu). Traktuj wersję jądra tutaj jako
+      orientacyjną, nie ostateczną.
+    </div>`;
+  }
+
   // --- EndeavourOS ---
   html += '<div class="card"><h2>🟣 EndeavourOS <span class="ref-badge">Punkt odniesienia</span></h2>';
   if (archRows.length === 0 && !eos.aur) {

@@ -64,6 +64,13 @@ wypełniania pola `package`).
 - Repology wymaga custom User-Agent i limitu 1 zapytania/s dla masowych
   klientów — skrypt budujący (`scripts/build-data.js`) robi 1,2 s przerwy
   między pakietami, żeby tego przestrzegać.
+- **Pakiety jądra (`linux`, `linux-lts` itd.) są szczególnie zwodnicze.**
+  Repology śledzi w Ubuntu pakiet `linux` (jądro „GA” z premiery danego
+  wydania), a nie osobny, rolujący tor **HWE** (`linux-hwe-24.04` itp.), który
+  domyślnie instaluje się na obrazach pulpitowych Ubuntu i Linux Mint i bywa
+  wyraźnie nowszy (np. Mint 22.3 realnie ma ~6.14, a `ubuntu_24_04` w
+  Repology pokazuje 6.8). Aplikacja wyświetla o tym ostrzeżenie w UI przy
+  wyszukiwaniu pakietów jądra, ale liczby traktuj jako orientacyjne.
 
 ## Struktura repo
 
