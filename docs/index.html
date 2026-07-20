@@ -440,6 +440,29 @@ function normalizeName(s) {
   return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
+// Niektore pakiety to jedna paczka obejmujaca kilka "aplikacji" ze znanymi
+// osobnymi nazwami (np. LibreOffice: Writer/Calc/Impress/Draw/Base/Math to
+// wszystko jedna paczka libreoffice-fresh/-still, nie osobne pakiety) - takie
+// wyszukiwania nie znajda niczego przez dopasowanie samej nazwy pakietu, wiec
+// dodajemy im rezne aliasy na najbardziej prawdopodobny cel. Jesli alias
+// koliduje z realnie istniejacym pakietem o dokladnie takiej nazwie (np. AUR
+// ma tez literalny pakiet "calc"), pokazujemy oba jako wybor zamiast po cichu
+// zgadywac.
+const NAME_ALIASES = {
+  writer: 'libreoffice-fresh',
+  calc: 'libreoffice-fresh',
+  impress: 'libreoffice-fresh',
+  draw: 'libreoffice-fresh',
+  base: 'libreoffice-fresh',
+  math: 'libreoffice-fresh',
+  libreofficewriter: 'libreoffice-fresh',
+  libreofficecalc: 'libreoffice-fresh',
+  libreofficeimpress: 'libreoffice-fresh',
+  libreofficedraw: 'libreoffice-fresh',
+  libreofficebase: 'libreoffice-fresh',
+  libreofficemath: 'libreoffice-fresh',
+};
+
 // Baza obejmuje WSZYSTKIE pakiety core/extra/multilib + AUR (ok. 131 tys.),
 // wiec zamiast trzymac wszystko w jednym pliku, dane sa podzielone na
 // "shardy" wg pierwszej znormalizowanej litery nazwy (patrz scripts/lib/
@@ -496,10 +519,20 @@ function resolvePackageName(pkg) {
   const packages = PKG_INDEX.packages || [];
   if (!packages.length) return { name: pkg, matched: 'exact' };
   const exact = packages.find((p) => p === pkg);
+  const norm = normalizeName(pkg);
+  const aliasTarget = NAME_ALIASES[norm];
+  const aliasExists = aliasTarget && packages.includes(aliasTarget);
+  // Jesli zapytanie jest znanym aliasem (np. "writer" -> libreoffice-fresh) i
+  // ISTNIEJE tez pakiet o dokladnie takiej literalnej nazwie (np. AUR ma
+  // pakiet "calc" niezwiazany z LibreOffice), nie zgadujemy po cichu -
+  // pokazujemy oba jako wybor.
+  if (exact && aliasExists && exact !== aliasTarget) {
+    return { name: null, matched: 'ambiguous', candidates: [exact, aliasTarget] };
+  }
   if (exact) return { name: exact, matched: 'exact' };
+  if (aliasExists) return { name: aliasTarget, matched: 'alias' };
   const caseInsensitive = packages.find((p) => p.toLowerCase() === pkg.toLowerCase());
   if (caseInsensitive) return { name: caseInsensitive, matched: 'case' };
-  const norm = normalizeName(pkg);
   if (!norm) return { name: pkg, matched: 'exact' };
   const normExact = packages.find((p) => normalizeName(p) === norm);
   if (normExact) return { name: normExact, matched: 'normalized' };
