@@ -1,0 +1,9 @@
+{
+  "name": "eos-pkg-checker",
+  "version": "1.0.0",
+  "description": "Wyszukiwarka i porownywarka wersji pakietow: EndeavourOS vs Debian, Ubuntu (wszystkie + LTS), Fedora, openSUSE, Gentoo, Linux Mint",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}

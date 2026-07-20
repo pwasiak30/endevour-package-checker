@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EOS Pkg Checker — wersje pakietow: EndeavourOS vs inne dystrybucje</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-card: #171a21;
+    --border: #262a33;
+    --text: #e6e8ec;
+    --text-dim: #9aa1ad;
+    --accent: #7c9eff;
+    --green: #3ecf8e;
+    --yellow: #e6c260;
+    --red: #e6796a;
+    --grey: #5a6070;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px 16px 60px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  .subtitle { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 24px; line-height: 1.5; }
+  form { display: flex; gap: 8px; margin-bottom: 8px; }
+  input[type="text"] {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+    font-size: 1rem;
+  }
+  input[type="text"]:focus { outline: 2px solid var(--accent); }
+  button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background: var(--accent);
+    color: #0f1115;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  button:disabled { opacity: 0.6; cursor: default; }
+  .hint { color: var(--text-dim); font-size: 0.82rem; margin-bottom: 24px; }
+  .status { color: var(--text-dim); margin: 20px 0; }
+  .error-box {
+    background: #2a1a1a; border: 1px solid #5a2a2a; color: var(--red);
+    padding: 12px 14px; border-radius: 10px; margin: 16px 0; font-size: 0.9rem;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .card h2 {
+    font-size: 1.05rem; margin: 0 0 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .ref-badge {
+    font-size: 0.7rem; background: var(--accent); color: #0f1115; padding: 2px 8px;
+    border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  tr:last-child td { border-bottom: none; }
+  .ver { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88rem; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600;
+  }
+  .badge.newest { background: rgba(62,207,142,0.15); color: var(--green); }
+  .badge.older { background: rgba(230,194,96,0.15); color: var(--yellow); }
+  .badge.unknown { background: rgba(90,96,112,0.2); color: var(--grey); }
+  .lts { font-size: 0.68rem; background: rgba(124,158,255,0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; margin-left: 6px; }
+  .estimated { color: var(--text-dim); font-style: italic; font-size: 0.8rem; }
+  .empty { color: var(--text-dim); font-style: italic; font-size: 0.88rem; }
+  footer { margin-top: 40px; color: var(--text-dim); font-size: 0.78rem; line-height: 1.6; }
+  a { color: var(--accent); }
+  .note { color: var(--text-dim); font-size: 0.8rem; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔎 EOS Pkg Checker</h1>
+  <p class="subtitle">
+    Wpisz nazwę pakietu, aby sprawdzić jego najnowszą wersję w repozytoriach, z których
+    korzysta EndeavourOS (Arch: core/extra/multilib + AUR), a następnie porównać
+    z Debian, Ubuntu (wszystkie wydania, w tym LTS), Fedora, openSUSE, Gentoo i Linux Mint.
+  </p>
+  <form id="searchForm">
+    <input type="text" id="pkgInput" placeholder="np. firefox, python, vim, neovim..." autocomplete="off" autocapitalize="off" spellcheck="false" />
+    <button type="submit" id="searchBtn">Szukaj</button>
+  </form>
+  <div class="hint">Dane pobierane na żywo z archlinux.org, aur.archlinux.org, repo.endeavouros.com (mirror) i repology.org.</div>
+
+  <div id="output"></div>
+
+  <footer>
+    Źródła danych: <a href="https://archlinux.org/packages/" target="_blank" rel="noopener">Arch Linux Packages</a>,
+    <a href="https://aur.archlinux.org/" target="_blank" rel="noopener">AUR</a>,
+    <a href="https://repology.org/" target="_blank" rel="noopener">Repology.org</a> (Debian, Ubuntu, Fedora, openSUSE, Gentoo),
+    <a href="https://packages.linuxmint.com/" target="_blank" rel="noopener">packages.linuxmint.com</a> (best-effort, z fallbackiem do bazy Ubuntu).
+    Porównanie wersji jest przybliżone — różne dystrybucje stosują różne konwencje numeracji (epoch, sufiksy dystrybucyjne, patche).
+    Repology nie śledzi EndeavourOS ani Linux Mint jako osobnych repozytoriów, dlatego te dane pochodzą z innych źródeł opisanych powyżej.
+  </footer>
+</div>
+
+<script>
+const OUTPUT = document.getElementById('output');
+const FORM = document.getElementById('searchForm');
+const INPUT = document.getElementById('pkgInput');
+const BTN = document.getElementById('searchBtn');
+
+// Prosty, przyblizony comparator wersji: wyciaga wiodace segmenty numeryczne
+// i porownuje je po kolei. Ignoruje epoch/suffixy dystrybucyjne w praktyce
+// wystarczajaco dobrze dla wiekszosci pakietow.
+function normalizeVersion(v) {
+  if (!v) return [];
+  // usun epoch "N:"
+  let s = String(v).replace(/^\d+:/, '');
+  // wytnij czesc po '+' lub '~' (czesto oznacza rewizje dystrybucyjne/prerelease)
+  s = s.split(/[+~]/)[0];
+  const parts = s.split(/[.\-_]/).filter(Boolean);
+  return parts.map((p) => {
+    const n = parseInt(p, 10);
+    return isNaN(n) ? p : n;
+  });
+}
+
+function compareVersions(a, b) {
+  const pa = normalizeVersion(a);
+  const pb = normalizeVersion(b);
+  const len = Math.max(pa.length, pb.length);
+  for (let i = 0; i < len; i++) {
+    const x = pa[i];
+    const y = pb[i];
+    if (x === undefined) return -1;
+    if (y === undefined) return 1;
+    if (typeof x === 'number' && typeof y === 'number') {
+      if (x !== y) return x - y;
+    } else {
+      const sx = String(x), sy = String(y);
+      if (sx !== sy) return sx < sy ? -1 : 1;
+    }
+  }
+  return 0;
+}
+
+function badgeFor(candidate, reference) {
+  if (!candidate || !reference) return '<span class="badge unknown">?</span>';
+  const cmp = compareVersions(candidate, reference);
+  if (cmp >= 0) return '<span class="badge newest">aktualna</span>';
+  return '<span class="badge older">starsza</span>';
+}
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function renderDistroTable(title, rows, referenceVersion, opts) {
+  opts = opts || {};
+  if (!rows || rows.length === 0) {
+    return `<div class="card"><h2>${title}</h2><div class="empty">Brak danych / pakiet nieznaleziony.</div></div>`;
+  }
+  const sorted = [...rows].sort((a, b) => (a.repo || a.release || '').localeCompare(b.repo || b.release || ''));
+  const trs = sorted.map((r) => {
+    const label = opts.labelFn ? opts.labelFn(r) : (r.repo || r.release);
+    const lts = r.lts ? '<span class="lts">LTS</span>' : '';
+    const estimated = r.estimated ? `<div class="estimated">${esc(r.source || 'estymacja')}</div>` : '';
+    const ver = r.version || '—';
+    return `<tr>
+      <td>${esc(label)}${lts}</td>
+      <td class="ver">${esc(ver)}${estimated}</td>
+      <td>${badgeFor(r.version, referenceVersion)}</td>
+    </tr>`;
+  }).join('');
+  return `<div class="card">
+    <h2>${title}</h2>
+    <table>
+      <thead><tr><th>Wydanie</th><th>Wersja</th><th>Status</th></tr></thead>
+      <tbody>${trs}</tbody>
+    </table>
+  </div>`;
+}
+
+async function doSearch(pkg) {
+  OUTPUT.innerHTML = '<div class="status">Szukam „' + esc(pkg) + '”…</div>';
+  BTN.disabled = true;
+  try {
+    const res = await fetch('/.netlify/functions/search?q=' + encodeURIComponent(pkg));
+    const data = await res.json();
+    if (!res.ok) {
+      OUTPUT.innerHTML = `<div class="error-box">${esc(data.error || 'Blad zapytania')}</div>`;
+      return;
+    }
+    render(data);
+  } catch (e) {
+    OUTPUT.innerHTML = `<div class="error-box">Blad polaczenia: ${esc(e.message)}</div>`;
+  } finally {
+    BTN.disabled = false;
+  }
+}
+
+function render(data) {
+  const eos = data.endeavouros || {};
+  const archRows = eos.arch_repos || [];
+  // referencyjna wersja = najnowsza wsrod core/extra/multilib (Arch jest rolling, wiec to zazwyczaj najbardziej aktualna)
+  let referenceVersion = null;
+  for (const r of archRows) {
+    if (!referenceVersion || compareVersions(r.version, referenceVersion) > 0) referenceVersion = r.version;
+  }
+  if (!referenceVersion && eos.aur) referenceVersion = eos.aur.version;
+
+  let html = '';
+
+  // --- EndeavourOS ---
+  html += '<div class="card"><h2>🟣 EndeavourOS <span class="ref-badge">Punkt odniesienia</span></h2>';
+  if (archRows.length === 0 && !eos.aur) {
+    html += '<div class="empty">Pakiet nieznaleziony w repozytoriach core/extra/multilib ani AUR.</div>';
+  } else {
+    html += '<table><thead><tr><th>Repozytorium</th><th>Wersja</th><th></th></tr></thead><tbody>';
+    for (const r of archRows) {
+      html += `<tr><td>${esc(r.repo)}</td><td class="ver">${esc(r.version)}</td><td>${r.version === referenceVersion ? '<span class="badge newest">najnowsza</span>' : ''}</td></tr>`;
+    }
+    if (eos.aur) {
+      html += `<tr><td>AUR</td><td class="ver">${esc(eos.aur.version)}</td><td></td></tr>`;
+    }
+    html += '</tbody></table>';
+  }
+  if (eos.arch_error) html += `<div class="note">Uwaga (core/extra/multilib): ${esc(eos.arch_error)}</div>`;
+  html += '</div>';
+
+  if (!data.repology_ok) {
+    html += `<div class="error-box">Repology.org chwilowo niedostępne (${esc(data.repology_error || '')}) — dane dla Debian/Ubuntu/Fedora/openSUSE/Gentoo mogą być niepełne.</div>`;
+  }
+
+  html += renderDistroTable('🟠 Debian (wszystkie śledzone wydania)', data.debian, referenceVersion, {
+    labelFn: (r) => r.repo.replace('debian_', 'Debian ').replace(/_/g, ' '),
+  });
+  html += renderDistroTable('🟣 Ubuntu (wszystkie wydania, w tym LTS)', data.ubuntu, referenceVersion, {
+    labelFn: (r) => r.repo.replace('ubuntu_', 'Ubuntu ').replace(/_/g, '.').replace(/\.backports/, ' backports'),
+  });
+  html += renderDistroTable('🔵 Fedora', data.fedora, referenceVersion, {
+    labelFn: (r) => r.repo.replace('fedora_', 'Fedora ').replace('rawhide', 'Rawhide'),
+  });
+  html += renderDistroTable('🟢 openSUSE', data.opensuse, referenceVersion, {
+    labelFn: (r) => r.repo.replace('opensuse_leap_', 'openSUSE Leap ').replace(/_/g, '.').replace('opensuse_tumbleweed', 'openSUSE Tumbleweed'),
+  });
+  html += renderDistroTable('🟪 Gentoo', data.gentoo, referenceVersion, {
+    labelFn: () => 'Gentoo (::gentoo)',
+  });
+  html += renderDistroTable('🍃 Linux Mint (best-effort)', data.mint, referenceVersion, {
+    labelFn: (r) => r.release,
+  });
+
+  OUTPUT.innerHTML = html;
+}
+
+FORM.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const v = INPUT.value.trim();
+  if (!v) return;
+  const params = new URLSearchParams(location.search);
+  params.set('q', v);
+  history.replaceState(null, '', '?' + params.toString());
+  doSearch(v);
+});
+
+// autostart z parametru ?q=
+const initial = new URLSearchParams(location.search).get('q');
+if (initial) {
+  INPUT.value = initial;
+  doSearch(initial);
+}
+</script>
+</body>
+</html>
