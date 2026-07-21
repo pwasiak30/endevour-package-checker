@@ -217,6 +217,34 @@
   .suggest-item:hover, .suggest-item.active { background: var(--diamond); }
   .suggest-item mark { background: var(--gold); padding: 0 1px; border-radius: 2px; }
   .empty { color: var(--text-dim); font-style: italic; font-size: 1.1rem; }
+  .favorites-bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 0 24px;
+    background: rgba(255,255,255,0.5); border: 2px dashed var(--wood); border-radius: 6px; padding: 10px 12px;
+  }
+  .favorites-bar[hidden] { display: none; }
+  .fav-label {
+    font-family: 'Press Start 2P', monospace; font-size: 0.62rem; color: var(--panel-dark); margin-right: 4px;
+  }
+  .favorites-list { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+  .fav-chip {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px 6px 12px;
+    background: var(--gold); color: #4a2e00; border: 2px solid var(--border); border-radius: 5px;
+    font-family: 'VT323', monospace; font-size: 1.05rem; cursor: pointer;
+    box-shadow: inset 2px 2px 0 rgba(255,255,255,0.4);
+  }
+  .fav-chip:hover { filter: brightness(1.08); }
+  .fav-chip .fav-remove {
+    border: none; background: transparent; cursor: pointer; font-size: 0.95rem; line-height: 1;
+    color: #7a1a12; padding: 0 2px;
+  }
+  .fav-toggle {
+    padding: 6px 10px; font-size: 1rem; background: var(--panel); color: var(--panel-dark);
+    border: 3px solid var(--border); border-radius: 5px; cursor: pointer; margin-left: 10px;
+    box-shadow: inset 2px 2px 0 rgba(255,255,255,0.4), inset -2px -2px 0 rgba(0,0,0,0.2);
+    vertical-align: middle;
+  }
+  .fav-toggle.active { background: var(--gold); }
+  .fav-toggle:hover { filter: brightness(1.08); }
   footer {
     margin-top: 40px; color: var(--text-dim); font-size: 0.95rem; line-height: 1.7;
     background: var(--panel); border: 4px solid var(--border); border-radius: 8px; padding: 14px 18px;
@@ -260,6 +288,11 @@
     Projekt jest w 100% statyczny (GitHub Pages) — dane są wyliczane cyklicznie przez GitHub Actions
     i zapisane jako pliki JSON w repo, żadnego backendu na żywo. Baza obejmuje wszystkie pakiety
     EndeavourOS (core/extra/multilib + AUR) — ładowanie…
+  </div>
+
+  <div id="favoritesBar" class="favorites-bar" hidden>
+    <span class="fav-label">⭐ Ulubione:</span>
+    <div id="favoritesList" class="favorites-list"></div>
   </div>
 
   <div id="output"></div>
@@ -432,6 +465,96 @@ function renderDistroTable(title, rows, referenceVersion, opts) {
 // dzialaja zarowno pod pwasiak30.github.io/<repo>/, jak i pod ew. wlasna domena.
 const HINT_EL = document.getElementById('hintText');
 let PKG_INDEX = { packages: [], details: {}, last_build: null };
+
+// --- Ulubione pakiety (trzymane lokalnie w przegladarce - localStorage,
+// bo strona jest w 100% statyczna i nie ma zadnego konta/backendu, ktory
+// moglby to synchronizowac). Dzieki temu czesto sprawdzane pakiety mozna
+// odpalic jednym klikniecem zamiast wpisywac nazwe za kazdym razem.
+const FAVORITES_KEY = 'eosPkgChecker.favorites';
+const FAVORITES_BAR = document.getElementById('favoritesBar');
+const FAVORITES_LIST = document.getElementById('favoritesList');
+
+function loadFavorites() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]');
+    return Array.isArray(raw) ? raw.filter((x) => typeof x === 'string') : [];
+  } catch (e) {
+    return [];
+  }
+}
+let FAVORITES = loadFavorites();
+
+function saveFavorites() {
+  try {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(FAVORITES));
+  } catch (e) {
+    // np. tryb prywatny bez dostepu do localStorage - ulubione po prostu nie przetrwaja odswiezenia
+  }
+}
+
+function isFavorite(name) {
+  return FAVORITES.includes(name);
+}
+
+function renderFavoritesBar() {
+  if (!FAVORITES.length) {
+    FAVORITES_BAR.hidden = true;
+    FAVORITES_LIST.innerHTML = '';
+    return;
+  }
+  FAVORITES_BAR.hidden = false;
+  FAVORITES_LIST.innerHTML = FAVORITES.map((name) => `
+    <span class="fav-chip" onclick="searchFavorite('${name.replace(/'/g, "\\'")}')">
+      ${esc(name)}
+      <button type="button" class="fav-remove" title="Usuń z ulubionych" onclick="event.stopPropagation(); removeFavorite('${name.replace(/'/g, "\\'")}')">✕</button>
+    </span>
+  `).join('');
+}
+
+function toggleFavorite(name) {
+  if (!name) return;
+  const idx = FAVORITES.indexOf(name);
+  if (idx === -1) {
+    FAVORITES.push(name);
+  } else {
+    FAVORITES.splice(idx, 1);
+  }
+  saveFavorites();
+  renderFavoritesBar();
+  updateFavToggleButton(name);
+}
+
+function removeFavorite(name) {
+  const idx = FAVORITES.indexOf(name);
+  if (idx !== -1) {
+    FAVORITES.splice(idx, 1);
+    saveFavorites();
+    renderFavoritesBar();
+    updateFavToggleButton(name);
+  }
+}
+
+function updateFavToggleButton(name) {
+  const btn = document.getElementById('favToggleBtn');
+  if (!btn || btn.dataset.pkg !== name) return;
+  const active = isFavorite(name);
+  btn.classList.toggle('active', active);
+  btn.textContent = active ? '★ W ulubionych' : '☆ Dodaj do ulubionych';
+}
+
+function searchFavorite(name) {
+  INPUT.value = name;
+  hideSuggestBox();
+  const params = new URLSearchParams(location.search);
+  params.set('q', name);
+  history.replaceState(null, '', '?' + params.toString());
+  doSearch(name);
+}
+window.toggleFavorite = toggleFavorite;
+window.removeFavorite = removeFavorite;
+window.searchFavorite = searchFavorite;
+
+renderFavoritesBar();
 
 // Normalizuje nazwe pakietu do porownan "rozmytych": male litery, bez spacji,
 // myslnikow, kropek i podkreslen - zeby "libre office" / "Libre-Office" /
@@ -673,7 +796,11 @@ function render(data, appendToExisting) {
   }
 
   // --- EndeavourOS ---
-  html += '<div class="card"><h2>🟣 EndeavourOS <span class="ref-badge">Punkt odniesienia</span></h2>';
+  const queryName = data.query || '';
+  const favActive = isFavorite(queryName);
+  html += `<div class="card"><h2>🟣 EndeavourOS <span class="ref-badge">Punkt odniesienia</span>` +
+    (queryName ? `<button type="button" id="favToggleBtn" class="fav-toggle${favActive ? ' active' : ''}" data-pkg="${esc(queryName)}" onclick="toggleFavorite('${queryName.replace(/'/g, "\\'")}')">${favActive ? '★ W ulubionych' : '☆ Dodaj do ulubionych'}</button>` : '') +
+    `</h2>`;
   if (archRows.length === 0 && !eos.aur) {
     html += '<div class="empty">Pakiet nieznaleziony w repozytoriach core/extra/multilib ani AUR.</div>';
   } else {
